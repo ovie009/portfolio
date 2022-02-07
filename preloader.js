@@ -37,6 +37,7 @@ canvas.style.backgroundColor = themeColors[0];
 
 console.log(window.innerWidth)
 
+
 // function to get a random integer between a max and min value 
 function randomInteger(min, max) {
     return Math.round(Math.random() * (max - min) + min)
@@ -60,6 +61,7 @@ function rotatingCoordinates( rotatingAngle, radius) {
         the "y" coordinate of the path drawn by the rotating ball after rotating
         through the angle, "rotatingAngle" is calculated below 
     */
+    let x = radius * Math.sin(rotatingAngle);
     let y = radius * Math.cos(rotatingAngle);
 
     // applying the equation of a circle (x - h)^2 + (y - k)^2 = r^2
@@ -68,7 +70,7 @@ function rotatingCoordinates( rotatingAngle, radius) {
     // r = radius 
     // y = y
     // making x subject of the formula
-    let x = Math.sqrt(Math.pow(radius, 2) - Math.pow(y, 2));
+    // let x = Math.sqrt(Math.pow(radius, 2) - Math.pow(y, 2));
     // let spot = new Balls(4, xOrigin - x, yOrigin + y);
     // balls.push(spot);
     return {x: x, y: y};
@@ -76,23 +78,89 @@ function rotatingCoordinates( rotatingAngle, radius) {
 }
 
 let rotatingAngle =  Math.PI / 180;
-function Balls(radius, x, y, animated, position) {
-    this.radius = radius;
-    this.x = x;
-    this.y = y;
+function Balls(radius, x, y, animated, position, increment) {
     this.animated = animated;
     this.position = position;
-
+    this.radius = radius;
+    this.rotatingRadius = 100;
+    this.increment = increment;
+    this.x = x;
+    this.y = y;
+    if (this.position  !== "center") {
+        
+        this.y -= this.rotatingRadius;
+        this.xOrigin = this.x;
+        this.yOrigin = this.y;
+        this.rotatingAngle = 0;
+        this.dw = 0;
+        this.loopSwitch = 1;
+    }
+    
+    
     this.update = function() {
+
+        if (this.position !== "center") {
+            
+            
+            if ( this.animated === true && this.position == "left") {
+                this.rotatingAngle += this.increment;
+                let coordinates = rotatingCoordinates(this.rotatingAngle, this.rotatingRadius);
+                this.x = coordinates.x + this.xOrigin;
+                this.y = coordinates.y + this.yOrigin;
+                // console.log("x: "+coordinates.x);
+                // console.log("y: "+coordinates.y);
+        
+                if (this.rotatingAngle < -Math.PI / 6) {
+                    this.increment = -this.increment;
+        
+                } else if (this.rotatingAngle > 0){
+                    this.x = this.xOrigin;
+                    this.y = this.yOrigin + this.rotatingRadius;
+                }
+
+            } else if ( this.animated === false && this.position == "left"){
+                this.x = this.xOrigin;
+                this.y = this.yOrigin + this.rotatingRadius;
+                
+            }
+    
+            if ( this.animated === true && this.position == "right") {
+                // this.increment = -this.increment;
+                this.rotatingAngle += this.increment;
+                let coordinates = rotatingCoordinates(this.rotatingAngle, this.rotatingRadius);
+                this.x = - coordinates.x + this.xOrigin;
+                this.y = coordinates.y + this.yOrigin;
+                // console.log("x: "+coordinates.x);
+                // console.log("y: "+coordinates.y);
+        
+                if (this.rotatingAngle < -Math.PI / 6) {
+                    this.increment = -this.increment;
+        
+                } else if (this.rotatingAngle > 0){
+                    this.x = this.xOrigin;
+                    this.y = this.yOrigin + this.rotatingRadius;
+    
+                    this.loopSwitch = 1;
+                }
+            } else if ( this.animated === false && this.position == "right"){
+                this.x = this.xOrigin;
+                this.y = this.yOrigin + this.rotatingRadius;
+                
+            }
+        }
+
+        console.log(this.loopSwitch);
+
+
         this.draw();
     }
-
+    
     this.draw = function() {
         c.beginPath()
         c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         c.fillStyle = themeColors[3];
         c.fill();
-        
+
     }
 
 }
@@ -101,18 +169,24 @@ function Balls(radius, x, y, animated, position) {
 
 function init() {
     let radius = Math.floor(cw/30);
+    // let x = centerX;
+    // let y = centerY;
+    // let animated = true;
+    // let position = "left";
     for (let i = 0; i < 10; i+=2) {
         let y = centerY;
         let x = (centerX - 4 * radius) + i * radius;
         let animated;
         let position;
+        let increment = -Math.PI / 180;
 
         if (i == 0 || i == 8) {
-            animated = true;
             if (i == 0) {
                 position = "left"
+                animated = true;
             } else {
                 position = "right"
+                animated = false;
             }
         } else {
             animated = false;
@@ -120,10 +194,11 @@ function init() {
         }
 
 
-        let ball = new Balls(radius, x, y, animated, position);
+        let ball = new Balls(radius, x, y, animated, position, increment);
         balls.push(ball);
-        //code 
     }
+    // let ball = new Balls(radius, x, y, animated, position);
+    // balls.push(ball);
 }
 
 console.log(balls)
