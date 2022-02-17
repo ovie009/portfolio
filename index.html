@@ -112,12 +112,15 @@
     <!-- preloader div, displays before page loads, 3seconds after load is complete display is set to none -->
     <div id="preloader">
         <div class="ball-wrapper">
-            <div class="ball"></div>
+            <div class="ball">
+                <!-- <img src="/icons/light-o.svg" alt=""> -->
+            </div>
             <div class="ball"></div>
             <div class="ball"></div>
             <div class="ball">
-                <div class="cross"></div>
-                <div class="arc"></div>
+                <img id="preloader-e" src="/icons/dark-e.svg" alt="preloder animated e">
+                <!-- <div class="cross"></div> -->
+                <!-- <div class="arc"></div> -->
             </div>
         </div>
     </div>
@@ -147,6 +150,16 @@
                 </ul>
             </div>
         </nav>
+        <div class="drop-right-div">
+            <h2>Menu</h2>
+            <ul>
+                <li>Work</li>
+                <li>About Me</li>
+                <li>Services</li>
+                <li>Tutorials</li>
+                <li>Contacts</li>
+            </ul>
+        </div>
     </header>
     <script>
         // after nav element has loded, check of the theme is not 
@@ -159,10 +172,13 @@
             let themeIcon = document.querySelector("#change-theme");
             // select logo
             let logo = document.querySelector("#logo");
-            // changing icons to the darkk variations
+            // select preloaderE
+            let preloaderE = document.querySelector("#preloader-e");
+            // changing icons to the dark variations
             dropDownIcon.src = "icons/light-list-icon.svg";
             themeIcon.src = "icons/light-mode.svg";
             logo.src = "icons/light-logo.svg";
+            preloaderE.src = "icons/light-e.svg";
         }
 
     </script>

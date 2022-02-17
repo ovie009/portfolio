@@ -28,9 +28,21 @@ function dropRight() {
         if (currentTheme === "light") {
             // if the theme is light, display the dark close icon
             dropDownIcon.src = "icons/dark-close.svg";
+            for (let i = 0; i <= 100; i++) {
+                let dropDiv = document.querySelector(".drop-right-div");
+                let inv = 100 - i;
+                dropDiv.style.width = `${i}%`;
+                dropDiv.style.left = `${inv}%`;
+            }
         } else {
             // if the theme is dark, display the light close icon
             dropDownIcon.src = "icons/light-close.svg";
+            for (let i = 0; i <= 100; i++) {
+                let dropDiv = document.querySelector(".drop-right-div");
+                let inv = 100 - i;
+                dropDiv.style.width = `${i}%`;
+                dropDiv.style.left = `${inv}%`;
+            }
         }
         // change dropdown state
         dropDown = true;
@@ -39,9 +51,21 @@ function dropRight() {
         if (currentTheme === "light") {
             // if the theme is light, display the dark list icon
             dropDownIcon.src = "icons/dark-list-icon.svg";
+            for (let i = 100; i >= 0; i--) {
+                let dropDiv = document.querySelector(".drop-right-div");
+                let inv = 100 - i;
+                dropDiv.style.width = `${i}%`;
+                dropDiv.style.left = `${inv}%`;
+            }
         } else {
             // if the theme is dark, display the light list icon
             dropDownIcon.src = "icons/light-list-icon.svg";
+            for (let i = 100; i >= 0; i--) {
+                let dropDiv = document.querySelector(".drop-right-div");
+                let inv = 100 - i;
+                dropDiv.style.width = `${i}%`;
+                dropDiv.style.left = `${inv}%`;
+            }
         }
         // change dropdown state
         dropDown = false;
