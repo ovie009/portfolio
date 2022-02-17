@@ -6,19 +6,189 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ovie Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        /*
+            THE CONTENT OF THIS SCRIPT TAG NEEDS TO BE LOADED
+            BEFORE THE BODY TAG TO CHECK THE 
+            THEME PREVOIUSLY CHOSEN, SO THE RIGHT 
+            COLORS AND ICONS CAN BE SET
+
+            THEME IS SET TO LIGHT BY DEFAULT
+        */
+        // theme colors array
+        // colors arranged from darkest to lightest
+        let themeColors = [
+            "#262626",
+            "#595959",
+            "#737373",
+            "#A6A6A6",
+            "#F2F2F2"
+        ]
+
+        // function to setCookie
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            let expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        // function to get cookie
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+            }
+            return "";
+        }
+
+        // function to checkCookie
+        // used to check the theme set by the user
+        function checkCookie() {
+            // cookie variable
+            let currentTheme = getCookie("themeColor");
+            if (currentTheme != "") { 
+                //if cookie variable exist
+                if (currentTheme === "light") {
+                    // if cookie is set to light equate CSS theme colors variables
+                    // to Javascript color array "themeColors"
+                    // the colors are arranged in the array from the darkest to the lightest
+                    setThemeValue(themeColors);
+                    // setThemeValue equates the colors in the "themeColors" array
+                    // to CSS themeColors variables in ascending order
+                } else {
+                    // switching the order of arrangement of the colors in the "themeColors"
+                    // array sets the theme to dark mode
+                    setThemeValue(themeColors.reverse());
+                    // the arrange of the themeColors array element is changed with themeColors.reverse()
+                }
+            } else {
+                //if cookie variable doesn't exist
+                setCookie("themeColor", "light", 365);
+                // set cookie to default value = "light"
+                setThemeValue(themeColors);
+            }
+        }
+
+        // function to set css theme colors variable with javascript themecolors array
+        function setThemeValue(themeArray) {
+            // get root element
+            let r = document.querySelector(':root');
+            // loop through themeColour array
+            /*
+                the CSS variables by default in the css file
+                :root{
+                    --themeColor1 : #262626;
+                    --themeColor2 : #595959;
+                    --themeColor3 : #737373;
+                    --themeColor4 : #A6A6A6;
+                    --themeColor5 : #F2F2F2;
+                }
+            */
+            for (let index = 0; index < themeArray.length; index++) {
+
+                const themeColor = themeArray[index];
+                r.style.setProperty(`--themeColor${index + 1}`, themeColor);
+                // console.log(`--themeColor${index + 1}, ${themeColor}`);
+            }
+        }
+
+        // run checkCookie function
+        checkCookie();
+    </script>
 </head>
 <body>
-    <!-- <canvas id="preloader"></canvas> -->
+    <!-- preloader div, displays before page loads, 3seconds after load is complete display is set to none -->
     <div id="preloader">
         <div class="ball-wrapper">
             <div class="ball"></div>
             <div class="ball"></div>
             <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
+            <div class="ball">
+                <div class="cross"></div>
+                <div class="arc"></div>
+            </div>
         </div>
     </div>
-    <!-- <script src="/preloader.js"></script> -->
+    <!-- 
+        this cursor div would be used for some styling later on...
+        intenede to be used to follow the mouse for cool effects
+    -->
+    <div id="cursor"></div>
+    <header>
+        <nav class="navbar">
+            <!-- link with the logo icon anchored to the index page -->
+            <a href="index.html" class="nav-header"> <img id="logo" src="/icons/dark-logo.svg" alt="Iffie Ovie"> </a>
+            <!-- button wrappers -->
+            <div class="nav-icons">
+                <!-- change theme button -->
+                <button class="drop-right" onclick="changeTheme()">
+                    <img id="change-theme" src="/icons/Dark-mode.svg" alt="dark mode icon">
+                </button>
+                <!-- dropdown(right) button -->
+                <button class="drop-right" onclick="dropRight()">
+                    <img id="drop-right" src="/icons/dark-list-icon.svg" alt="drop down icon">
+                </button>
+                <!-- nav links, to be displayed only in desktop view
+                    while the buttons would not be displayed
+                -->
+                <ul class="nav-links">
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <script>
+        // after nav element has loded, check of the theme is not 
+        // the default "light" theme
+        // if its not, switch all the icons to the dark versions 
+        if ( getCookie("themeColor") !== "light" ) {
+            // select drop down icon
+            let dropDownIcon = document.querySelector("#drop-right");
+            // select icon to toggle theme
+            let themeIcon = document.querySelector("#change-theme");
+            // select logo
+            let logo = document.querySelector("#logo");
+            // changing icons to the darkk variations
+            dropDownIcon.src = "icons/light-list-icon.svg";
+            themeIcon.src = "icons/light-mode.svg";
+            logo.src = "icons/light-logo.svg";
+        }
+
+    </script>
+    <main>
+        <!-- Main Heading of web page -->
+        <h1 class="main-heading">
+            <span class="setup-text">Hi, my name is</span>
+            <strong>Iffie Ovie.</strong>
+            <span class="follow-up-text">I write codes for the Web & Micro-Controllers</span>
+        </h1>
+        <!-- about em paragraph -->
+        <p class="about-me">I'm a fullsatck developer specializing in buliding (and occasionally designing) exceptional digital experiences on the web. I.m als a graduate of Electrical Electronics Enginnering which was a catalyst for my passion for embedded systems, Arduino to be exact.</p>
+
+        <!-- contact me button, would have auto scroll feature to contact info
+            at bottom of the page
+        -->
+        <button class="contact-me">Contact me!</button>
+
+        <!-- animated scroll indicator -->
+        <div class="scroll-indicator">
+            <p>
+                scroll down
+            </p>
+        </div>
+    </main>
+    <!-- load script flie -->
     <script src="main.js"></script>
 </body>
 </html>

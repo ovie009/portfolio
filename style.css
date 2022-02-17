@@ -1,16 +1,49 @@
 :root{
-    --color1 : #048C7F;
-    --color2 : #F2E2C4;
-    --color3 : #D99441;
-    --color4 : #D94E41;
-    --color5 : #BF0A0A;
+    --themeColor1 : #262626;
+    --themeColor2 : #595959;
+    --themeColor3 : #737373;
+    --themeColor4 : #A6A6A6;
+    --themeColor5 : #F2F2F2;
 }
+/* 
+@font-face {
+    font-family: poppins;
+    src: url(fonts/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: poppins;
+    src: url(fonts/Poppins-Italic.ttf);
+    font-style: italic;
+}
+
+@font-face {
+    font-family: poppins;
+    src: url(fonts/Poppins-Light.ttf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: poppins;
+    src: url(fonts/Poppins-Thin.ttf);
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: poppins;
+    src: url(fonts/Poppins-Bold.ttf);
+    font-weight: 700;
+} */
 
 body{
+    font-family: 'Poppins', sans-serif;
     padding: 0;
     margin: 0;
+    font-family: poppins;
+    background-color: var(--themeColor5);
 }
 
+/* Preloader div styling */
 #preloader{
     padding: 0;
     margin: 0;
@@ -24,6 +57,7 @@ body{
     place-items: center;
 }
 
+/* parent div of the animating balls in the preloader */
 .ball-wrapper{
     display: flex;
     gap: 0.2px;
@@ -31,53 +65,125 @@ body{
     height: 200px;
     justify-content: center;
     align-items: center;
-    /* background-color: seagreen; */
-    /* border-top: 1px solid black; */
-    /* border-bottom: 1px solid black; */
 }
 
-.ball{
+/* preloader animated balls */
+/* preloader animated balls */
+/* preloader animated balls */
+/* preloader animated balls */
+
+.ball{ /*general css of all the balls*/
     width: calc(100vw / 30);
     height: calc(100vw / 30);
-    border: 2px solid var(--color1);
+    border: 2px solid var(--themeColor1);
     border-radius: 50%;
     position: relative;
+    /* box-sizing: border-box; */
 }
 
+/* styling first ball */
 .ball:first-child{
     /* background-color: ; */
     animation-name: leftBall;
+    width: calc(100vw / 20);
+    height: calc(100vw / 20);
+
     animation-duration: 1s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
 
+/* styling exclusive to the "v" and "i" of the preloader*/
+.ball:nth-child(2), .ball:nth-child(3){
+    margin-top: 7.5px;
+}
+
+/* stylig specific to the v, in order to get the desired "v" shape */
+.ball:nth-child(2){
+    width: 0;
+    height: 0;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    border-radius: 0;
+    border-top-width: calc(100vw / 30);
+    border-right-width: calc(100vw / 50);
+    border-left-width: calc(100vw / 50);
+    border-bottom-width: 0;
+    border-color: var(--themeColor1) transparent transparent transparent;
+    border-style: solid;
+}
+
+/* stylig specific to the "i", in order to get the desired "i" shape */
+.ball:nth-child(3){
+    margin-right: 2.5px;
+    width: 2.5px;
+    box-sizing: border-box;
+    padding: 0;
+    background-color: var(--themeColor1); 
+    border-left: none;
+    border-radius: 1px;
+}
+
+/* styling last ball */
 .ball:last-child{
     /* background-color: #000031; */
+    background-color: var(--themeColor1);
     animation-name: rightBall;
     animation-duration: 1s;
     /* animation-delay: 1s; */
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+    width: calc(100vw / 20);
+    height: calc(100vw / 20);
+    /* overflow: hidden; */
+    z-index: 1;
 }
 
+/* styling the line that crosses the lower half of the "e" i.e the last ball of the preloader */
+.cross{
+    width: calc(100% + 10);
+    width: 130%;
+    height: 25%;
+    background-color: var(--themeColor5);
+    z-index: 2;
+    position: absolute;
+    top: 10px;
+    left: -3px;
+}
+
+/* styling the arc on the lower half of the "e", i.e. the last ball of the preloader*/
+.arc{
+    width: calc(100% + 10);
+    width: 50%;
+    height: 35%;
+    background-color: var(--themeColor5);
+    z-index: 3;
+    position: absolute;
+    top: 10px;
+    left: 25%;
+    border-radius: 0 0 50% 50%;
+}
+
+/* animation corresponding to the first ball */
+/* where the radius of rotation is 100px */
 @keyframes leftBall {
-    0% {bottom: 0; right: 0;}
-    2% {bottom: 0.4px; right: 8.7px; background-color: var(--color1);}
-    4% {bottom: 1.5px; right: 17.4px; background-color: var(--color1);}
-    8.75% {bottom: 3.4px; right: 25.9px; background-color: var(--color1);}
-    15% {bottom: 6px; right: 34.2px; background-color: var(--color1);}
-    22.5% {bottom: 13.4px; right: 50px;}
-    27.5% {bottom: 13.4px; right: 50px;}
-    35% {bottom: 6px; right: 34.2px;}
-    41.25% {bottom: 3.4px; right: 25.9px;}
-    45% {bottom: 1.5px; right: 17.4px;}
-    47% {bottom: 0.4px; right: 8.7px;}
-    50% {bottom: 0; right: 0;}
-    100% {bottom: 0; right: 0;}
+    0% {bottom: 0; right: 0;} /*angle of rotation 0deg*/
+    2% {bottom: 0.4px; right: 8.7px; background-color: var(--themeColor1);} /*angle of rotation 5deg*/
+    4% {bottom: 1.5px; right: 17.4px; background-color: var(--themeColor1);} /*angle of rotation 10deg*/
+    8.75% {bottom: 3.4px; right: 25.9px; background-color: var(--themeColor1);} /*angle of rotation 15deg*/
+    15% {bottom: 6px; right: 34.2px; background-color: var(--themeColor1);} /*angle of rotation 20deg*/
+    22.5% {bottom: 13.4px; right: 50px;} /*angle of rotation 30deg*/
+    27.5% {bottom: 13.4px; right: 50px;} /*angle of rotation 30deg*/
+    35% {bottom: 6px; right: 34.2px;} /*angle of rotation 20deg*/
+    41.25% {bottom: 3.4px; right: 25.9px;} /*angle of rotation 15deg*/
+    45% {bottom: 1.5px; right: 17.4px;} /*angle of rotation 10deg*/
+    47% {bottom: 0.4px; right: 8.7px;} /*angle of rotation 5deg*/
+    50% {bottom: 0; right: 0;} /*angle of rotation 0deg*/
+    100% {bottom: 0; right: 0;} /*angle of rotation 0deg*/
 
 }
 
+/* animation corresponding to the last ball */
 @keyframes rightBall {
     0% {bottom: 0; left: 0;}
     50% {bottom: 0; left: 0;}
@@ -87,10 +193,160 @@ body{
     65% {bottom: 6px; left: 34.2px;}
     72.5% {bottom: 13.4px; left: 50px;}
     77.5% {bottom: 13.4px; left: 50px;}
-    85% {bottom: 6px; left: 34.2px; background-color: var(--color1);}
-    91.25% {bottom: 3.4px; left: 25.9px; background-color: var(--color1);}
-    95% {bottom: 1.5px; left: 17.4px; background-color: var(--color1);}
-    98% {bottom: 0.4px; left: 8.7px; background-color: var(--color1);}
+    85% {bottom: 6px; left: 34.2px;}
+    91.25% {bottom: 3.4px; left: 25.9px;}
+    95% {bottom: 1.5px; left: 17.4px;}
+    98% {bottom: 0.4px; left: 8.7px;}
     100% {bottom: 0; left: 0;}
 
+}
+
+
+/* NAV STYLING */
+header{
+    padding-top: 20px;
+    width: 100vw;
+    height: 70px;
+    box-sizing: border-box;
+    /* background-color: tomato; */
+}
+
+nav{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-links{
+    display: none;
+}
+
+.nav-header{
+    text-decoration: none;
+    /* font-weight: 700; */
+    font-size: 1.8em;
+    font-family: pulang;
+}
+
+.nav-icons{
+    display: flex;
+    gap: 10px;
+}
+
+.drop-right{
+    padding: 0%;
+    width: 60px;
+    height: 40px;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    background-color: none;
+    /* border: 1px solid black; */
+}
+
+.drop-right img{
+    display: fixed;
+    transition: 3s ease-in-out;
+}
+
+.drop-right div{
+    width: 75%;
+    height: 2px;
+    background-color: var(--themeColor2);
+    /* position: fixed; */
+    margin: 0;
+    padding: 0;
+}
+
+#button-canvas{
+    /* border: red solid 1px; */
+    width: 30px;
+    height: 30px;
+}
+
+/* main styling */
+main{
+    padding: 0 20px;
+    display: flex;
+    flex-flow: column;
+    position: relative;
+    /* background-color: red; */
+    min-height: calc(100vh - 70px);
+}
+
+.main-heading{
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    color: var(--themeColor2);
+    font-family: poppins;
+    font-weight: 400;
+    height: 400px;
+}
+
+.setup-text{
+    /* font-weight: 200; */
+    font-size: .5em;
+    color: var(--themeColor1);
+}
+
+.follow-up-text{
+    font-size: 0.8em;
+    color: var(--themeColor1);
+}
+
+.about-me{
+    color: var(--themeColor2);
+    font-family: poppins;
+    font-size: .8em;
+    max-width: 500px;
+    /* background-color: red; */
+}
+
+.contact-me{
+    margin: 20px 0;
+    font-family: poppins;
+    padding: 10px 30px;
+    width: 200px;
+    border-radius: 4px;
+    border: none;
+    color: var(--themeColor1);
+    /* border: 1px solid var(--themeColor2); */
+    background-color: transparent;
+    box-shadow: 1px 1px 2px 2px var(--themeColor4);
+}
+
+.scroll-indicator{
+    position: absolute;
+    font-weight: 300;
+    font-size: .8em;
+    color: var(--themeColor1);
+    position: absolute;
+    bottom: 30px;
+    left: -10px;
+    transform: rotateZ(90deg);
+    animation-name: scrollDown;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes scrollDown {
+    0% {bottom: 30px;}
+    50% {bottom: 50px;}
+    100% {bottom: 30px;}
 }
