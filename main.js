@@ -4,7 +4,7 @@
 window.onload = setTimeout(() => {
     let preorder = document.getElementById("preloader");
     preorder.style.display = "none";
-}, 3000);
+}, 1000);
 
 // variable to check the dropdown state
 let dropDown = false;

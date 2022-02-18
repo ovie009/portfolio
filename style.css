@@ -5,35 +5,6 @@
     --themeColor4 : #A6A6A6;
     --themeColor5 : #F2F2F2;
 }
-/* 
-@font-face {
-    font-family: poppins;
-    src: url(fonts/Poppins-Regular.ttf);
-}
-
-@font-face {
-    font-family: poppins;
-    src: url(fonts/Poppins-Italic.ttf);
-    font-style: italic;
-}
-
-@font-face {
-    font-family: poppins;
-    src: url(fonts/Poppins-Light.ttf);
-    font-weight: 300;
-}
-
-@font-face {
-    font-family: poppins;
-    src: url(fonts/Poppins-Thin.ttf);
-    font-weight: 100;
-}
-
-@font-face {
-    font-family: poppins;
-    src: url(fonts/Poppins-Bold.ttf);
-    font-weight: 700;
-} */
 
 body{
     font-family: 'Poppins', sans-serif;
@@ -55,6 +26,9 @@ body{
     left: 0;
     display: grid;
     place-items: center;
+    position: fixed;
+    z-index: 100;
+    background-color: var(--themeColor5);
 }
 
 /* parent div of the animating balls in the preloader */
@@ -215,6 +189,7 @@ header{
     width: 100vw;
     height: 70px;
     box-sizing: border-box;
+    position: relative;
     /* background-color: tomato; */
 }
 
@@ -299,6 +274,7 @@ nav{
     align-items: flex-start;
     padding: 0 50px 50px;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .drop-right-div h2{
@@ -314,9 +290,12 @@ nav{
 .drop-right-div ul li{
     list-style: none;
     font-size: 2em;
-    color: var(--themeColor1);
 }
 
+.drop-right-div ul li a{
+    text-decoration: none;
+    color: var(--themeColor1);
+}
 
 
 /* main styling */
@@ -327,6 +306,7 @@ main{
     display: flex;
     flex-flow: column;
     position: relative;
+    overflow-x: hidden;
     /* background-color: red; */
     min-height: calc(100vh - 70px);
 }
@@ -355,12 +335,21 @@ main{
     font-size: 0.8em;
     color: var(--themeColor1);
 }
+.my-name{
+    display: flex;
+}
+
+.name-letters{
+    margin: 0;
+    padding: 0;
+}
 
 .about-me{
     color: var(--themeColor2);
     font-family: poppins;
     font-size: .8em;
     max-width: 500px;
+    /* visibility: hidden; */
     /* background-color: red; */
 }
 

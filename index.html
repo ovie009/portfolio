@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- add class "sr" to HTML tag for seemless scrollreveal animations -->
+<html lang="en" class="sr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -107,6 +108,16 @@
         // run checkCookie function
         checkCookie();
     </script>
+    <!-- set up scroll reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+        ScrollReveal({ 
+            reset: true ,
+            distance: "60px",
+            duration: 2500,
+            delay: 1000
+        });
+    </script>
 </head>
 <body>
     <!-- preloader div, displays before page loads, 3seconds after load is complete display is set to none -->
@@ -150,16 +161,6 @@
                 </ul>
             </div>
         </nav>
-        <div class="drop-right-div">
-            <h2>Menu</h2>
-            <ul>
-                <li>Work</li>
-                <li>About Me</li>
-                <li>Services</li>
-                <li>Tutorials</li>
-                <li>Contacts</li>
-            </ul>
-        </div>
     </header>
     <script>
         // after nav element has loded, check of the theme is not 
@@ -186,7 +187,19 @@
         <!-- Main Heading of web page -->
         <h1 class="main-heading">
             <span class="setup-text">Hi, my name is</span>
-            <strong>Iffie Ovie.</strong>
+            <strong class="my-name">
+                <span class="mane-letters name-1">I</span>
+                <span class="mane-letters name-2">f</span>
+                <span class="mane-letters name-3">f</span>
+                <span class="mane-letters name-4">i</span>
+                <span class="mane-letters name-5">e</span>
+                &nbsp;
+                <span class="mane-letters name-6">O</span>
+                <span class="mane-letters name-7">v</span>
+                <span class="mane-letters name-8">i</span>
+                <span class="mane-letters name-9">e</span>
+                <!-- Iffie Ovie. -->
+            </strong>
             <span class="follow-up-text">I write codes for the Web & Micro-Controllers</span>
         </h1>
         <!-- about em paragraph -->
@@ -203,8 +216,21 @@
                 scroll down
             </p>
         </div>
+        <div class="drop-right-div">
+            <h2>Menu</h2>
+            <ul class="dropdown-list">
+                <li class="list-item-work"><a href="#">Work</a></li>
+                <li class="list-item-about"><a href="#">About Me</a></li>
+                <li class="list-item-services"><a href="#">Services</a></li>
+                <li class="list-item-tutorials"><a href="#">Tutorials</a></li>
+                <li class="list-item-contacts"><a href="#">Contacts</a></li>
+            </ul>
+        </div>
     </main>
-    <!-- load script flie -->
+    <!-- load main script flie -->
     <script src="main.js"></script>
+    <!-- load scrollreavel script file -->
+    <script src="/scrollreveal.js"></script>
+   
 </body>
 </html>
