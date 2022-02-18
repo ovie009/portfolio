@@ -3,6 +3,8 @@ ScrollReveal().reveal(".setup-text", { delay: 250, origin: "left" });
 ScrollReveal().reveal(".follow-up-text", { delay: 250, origin: "bottom" });
 ScrollReveal().reveal(".about-me", { delay: 250, origin: "bottom" });
 ScrollReveal().reveal(".contact-me", { delay: 750, origin: "bottom" });
+ScrollReveal().reveal("#logo", { delay: 300, origin: "left" });
+ScrollReveal().reveal(".drop-right", { delay: 200, origin: "right" });
 
 let time;
 // scrollreveal each leetr of my name at a 200 milliseconds interval
