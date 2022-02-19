@@ -137,7 +137,7 @@
     </div>
     <!-- 
         this cursor div would be used for some styling later on...
-        intenede to be used to follow the mouse for cool effects
+        intended to be used to follow the mouse for cool effects
     -->
     <div id="cursor"></div>
     <header>
@@ -216,6 +216,7 @@
                 scroll down
             </p>
         </div>
+        <!-- the drop down div that slides to the left when the dropdowm icon is clicked-->
         <div class="drop-right-div">
             <h2>Menu</h2>
             <ul class="dropdown-list">
@@ -226,11 +227,21 @@
                 <li class="list-item-contacts"><a href="#">Contacts</a></li>
             </ul>
         </div>
+
+        <!--
+            main canvas on the landing page, position is set to absolute
+            while it's parent position is relative
+            while these properties would be set using CSS
+            The width and height of the canvas must be set with Javascript
+            to avoid some bugs in the results
+        -->
+        <canvas id="main-canvas"></canvas>
     </main>
     <!-- load main script flie -->
     <script src="main.js"></script>
     <!-- load scrollreavel script file -->
     <script src="/scrollreveal.js"></script>
-   
+    <!-- load canvas javascript file -->
+    <script src="/canvas.js"></script>
 </body>
 </html>
