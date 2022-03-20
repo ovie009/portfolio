@@ -29,6 +29,9 @@
             "#F2F2F2"
         ]
 
+        // variable to control background color of inout fields
+        let inputBackgroundColor;
+
         // function to setCookie
         function setCookie(cname, cvalue, exdays) {
             const d = new Date();
@@ -68,12 +71,22 @@
                     setThemeValue(themeColors);
                     // setThemeValue equates the colors in the "themeColors" array
                     // to CSS themeColors variables in ascending order
+
                 } else {
                     // switching the order of arrangement of the colors in the "themeColors"
                     // array sets the theme to dark mode
                     setThemeValue(themeColors.reverse());
                     // the arrange of the themeColors array element is changed with themeColors.reverse()
                 }
+
+            
+                // assigning the right colors for the input fields
+                // because input field colors isn't part of the theme color
+                var r = document.querySelector(":root");
+                var rs = getComputedStyle(r);
+
+                inputBackgroundColor = rs.getPropertyValue(`--${currentTheme}Input`);
+
             } else {
                 //if cookie variable doesn't exist
                 setCookie("themeColor", "light", 365);
@@ -162,42 +175,21 @@
             </div>
         </nav>
     </header>
-    <script>
-        // after nav element has loded, check of the theme is not 
-        // the default "light" theme
-        // if its not, switch all the icons to the dark versions 
-        if ( getCookie("themeColor") !== "light" ) {
-            // select drop down icon
-            let dropDownIcon = document.querySelector("#drop-right");
-            // select icon to toggle theme
-            let themeIcon = document.querySelector("#change-theme");
-            // select logo
-            let logo = document.querySelector("#logo");
-            // select preloaderE
-            let preloaderE = document.querySelector("#preloader-e");
-            // changing icons to the dark variations
-            dropDownIcon.src = "icons/light-list-icon.svg";
-            themeIcon.src = "icons/light-mode.svg";
-            logo.src = "icons/light-logo.svg";
-            preloaderE.src = "icons/light-e.svg";
-        }
-
-    </script>
     <main>
         <!-- Main Heading of web page -->
         <h1 class="main-heading">
             <span class="setup-text">Hi, my name is</span>
             <strong class="my-name">
-                <span class="mane-letters name-1">I</span>
-                <span class="mane-letters name-2">f</span>
-                <span class="mane-letters name-3">f</span>
-                <span class="mane-letters name-4">i</span>
-                <span class="mane-letters name-5">e</span>
+                <span class="name-letters name-1">I</span>
+                <span class="name-letters name-2">f</span>
+                <span class="name-letters name-3">f</span>
+                <span class="name-letters name-4">i</span>
+                <span class="name-letters name-5">e</span>
                 &nbsp;
-                <span class="mane-letters name-6">O</span>
-                <span class="mane-letters name-7">v</span>
-                <span class="mane-letters name-8">i</span>
-                <span class="mane-letters name-9">e</span>
+                <span class="name-letters name-6">O</span>
+                <span class="name-letters name-7">v</span>
+                <span class="name-letters name-8">i</span>
+                <span class="name-letters name-9">e</span>
                 <!-- Iffie Ovie. -->
             </strong>
             <span class="follow-up-text">I write codes for the Web & Micro-Controllers</span>
@@ -208,7 +200,7 @@
         <!-- contact me button, would have auto scroll feature to contact info
             at bottom of the page
         -->
-        <button class="contact-me">Contact me!</button>
+        <a href="#contact-section" class="contact-me">Contact me!</a>
 
         <!-- animated scroll indicator -->
         <div class="scroll-indicator">
@@ -237,6 +229,98 @@
         -->
         <canvas id="main-canvas"></canvas>
     </main>
+    <section id="contact-section">
+        <h2 class="contact-heading">
+            <!-- Contact me -->
+            <span class="contact-1">C</span>
+            <span class="contact-2">o</span>
+            <span class="contact-3">n</span>
+            <span class="contact-4">t</span>
+            <span class="contact-5">a</span>
+            <span class="contact-6">c</span>
+            <span class="contact-7">t</span>
+            &nbsp;
+            <span class="contact-8">m</span>
+            <span class="contact-9">e</span>
+        </h2>
+        <hr class="contact-rule">
+        <div>
+            <p class="contact-paragraph">
+                I'm interested in freelancing opportunities in web development and embedded systems projects. However if you have other request or questions, dont hesitate to use the form.
+            </p>
+            <form action="#" id="contact-form">
+                <input type="text" name="name" id="input-name" class="input-fields" placeholder="name">
+                <input type="email" name="email" id="input-email" class="input-fields" placeholder="email">
+                <input type="text" name="subject" id="input-subject" class="input-fields" placeholder="subject">
+                <textarea name="message" id="input-message" cols="40" rows="10" class="input-fields" placeholder="Message"></textarea>
+                <button type="button" name="contactMe" id="contact-submit">submit</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-wrapper">
+            <ul class="footer-icons">
+                <li><a href="#"><img id="linkedin-logo" src="/icons/dark-linkedin.svg" alt="linkedIn"></a></li>
+                <li><a href="#"><img id="github-logo" src="/icons/dark-github.svg" alt="github"></a></li>
+                <li><a href="#"><img id="facebook-logo" src="/icons/dark-facebook.svg" alt="facebook"></a></li>
+                <li><a href="#"><img id="whatsapp-logo" src="/icons/dark-whatsapp.svg" alt="whatsapp"></a></li>
+                <li><a href="#"><img id="instagram-logo" src="/icons/dark-instagram.svg" alt="instagram"></a></li>
+            </ul>
+            <p class="footer-text">
+                Designed and Built by Iffie Ovie
+            </p>
+        </div>
+    </footer>
+    <script>
+
+        if ( getCookie("themeColor") !== "light" ) {
+            /*
+                after all the html has loaded, check if the theme is not 
+                the default "light" theme
+                if its not, switch all the icons to the dark versions 
+            */
+            // select drop down icon
+            let dropDownIcon = document.querySelector("#drop-right");
+            // select icon to toggle theme
+            let themeIcon = document.querySelector("#change-theme");
+            // select logo
+            let logo = document.querySelector("#logo");
+            // select preloaderE
+            let preloaderE = document.querySelector("#preloader-e");
+
+            // select footer icons
+            let linkedin = document.querySelector("#linkedin-logo");
+            let github = document.querySelector("#github-logo");
+            let facebook = document.querySelector("#facebook-logo");
+            let whatsapp = document.querySelector("#whatsapp-logo");
+            let instagram = document.querySelector("#instagram-logo");
+
+            // changing icons to the dark variations
+            dropDownIcon.src = "icons/light-list-icon.svg";
+            themeIcon.src = "icons/light-mode.svg";
+            logo.src = "icons/light-logo.svg";
+            preloaderE.src = "icons/light-e.svg";
+
+            // change footer icons
+            linkedin.src = "icons/light-linkedin.svg";
+            github.src = "icons/light-github.svg";
+            facebook.src = "icons/light-facebook.svg";
+            whatsapp.src = "icons/light-whatsapp.svg";
+            instagram.src = "icons/light-instagram.svg";
+            
+            // after input fields has loaded
+            // select input fields
+            let inputName = document.querySelector("#input-name");
+            let inputEmail = document.querySelector("#input-email");
+            let inputSubject = document.querySelector("#input-subject");
+            let inputMessage = document.querySelector("#input-message");
+            inputName.style.backgroundColor = inputBackgroundColor;
+            inputEmail.style.backgroundColor = inputBackgroundColor;
+            inputSubject.style.backgroundColor = inputBackgroundColor;
+            inputMessage.style.backgroundColor = inputBackgroundColor;
+        }
+
+    </script>
     <!-- load main script flie -->
     <script src="main.js"></script>
     <!-- load scrollreavel script file -->

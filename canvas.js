@@ -26,7 +26,7 @@ function init() {
         let y = randomInteger(radius, ch - radius);
         let dx = randomFloat(-0.5, 0.5);
         let dy = randomFloat(-0.5, 0.5);
-        let color = themeColors[randomInteger(0, 5)];
+        let color = themeColors[randomInteger(1, 3)];
         snowArray.push(new Snow(x, y, dx, dy, radius, color));
     }
 }
