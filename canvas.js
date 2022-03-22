@@ -18,7 +18,7 @@ let snowArray = [];
 // function that initializes the snow object 
 function init() {
     // variable to control number of snowballs
-    let numberOfSnnowBalls = 100;
+    let numberOfSnnowBalls = 125;
     for (let i = 0; i < numberOfSnnowBalls; i++) {
         // generating random values for each of the propertirs of the snow ball
         let radius = randomInteger(1, 3);
@@ -31,7 +31,7 @@ function init() {
     }
 }
 
-console.log(snowArray)
+// console.log(snowArray)
 
 // snow object
 function Snow(x, y, dx, dy, radius, color) {

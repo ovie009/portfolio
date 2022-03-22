@@ -126,10 +126,27 @@ function changeTheme() {
         let inputEmail = document.querySelector("#input-email");
         let inputSubject = document.querySelector("#input-subject");
         let inputMessage = document.querySelector("#input-message");
+
+        // select card and card wrapper
+        let card = document.getElementsByClassName("card");
+        let cardTextWrapper = document.getElementsByClassName("card-text-wrapper");
+
+        // set inout background colors
         inputName.style.backgroundColor = inputBackgroundColor;
         inputEmail.style.backgroundColor = inputBackgroundColor;
         inputSubject.style.backgroundColor = inputBackgroundColor;
         inputMessage.style.backgroundColor = inputBackgroundColor;
+
+
+        //  set card background colors
+        // console.log(typeof card)
+        // console.log(card)
+        for (let index = 0; index < card.length; index++) {
+            
+            card[index].style.backgroundColor = inputBackgroundColor;
+            cardTextWrapper[index].style.backgroundColor = inputBackgroundColor;
+            
+        }
         
     } else {
         // if theme is dark, it is being switched to light
@@ -171,10 +188,27 @@ function changeTheme() {
         let inputEmail = document.querySelector("#input-email");
         let inputSubject = document.querySelector("#input-subject");
         let inputMessage = document.querySelector("#input-message");
+
+        // select card and card wrapper
+        let card = document.getElementsByClassName("card");
+        let cardTextWrapper = document.getElementsByClassName("card-text-wrapper");
+
+        // set inout background colors
         inputName.style.backgroundColor = inputBackgroundColor;
         inputEmail.style.backgroundColor = inputBackgroundColor;
         inputSubject.style.backgroundColor = inputBackgroundColor;
         inputMessage.style.backgroundColor = inputBackgroundColor;
+        
+        //  set card background colors
+        // console.log(typeof card)
+        // console.log(card)
+        for (let index = 0; index < card.length; index++) {
+            
+            card[index].style.backgroundColor = inputBackgroundColor;
+            cardTextWrapper[index].style.backgroundColor = inputBackgroundColor;
+            
+        }
+        
     }
 
     

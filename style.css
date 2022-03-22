@@ -406,6 +406,88 @@ main{
     /* display: none; */
 }
 
+/* skills section styling */
+/* skills section styling */
+/* skills section styling */
+#skills-section{
+    border-top: 1px solid var(--themeColor4);
+    padding: 30px 20px 40px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex-flow: column wrap;
+    gap: 25px;
+}
+
+.skills-heading{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    color: var(--themeColor2);
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: x-large;
+}
+
+.card{
+    background-color: var(--lightInput);
+    text-decoration: none;
+    border-radius: 15px;
+    color: unset;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-flow: column;
+    max-width: 400px;
+    box-shadow: var(--boxShadow);
+    position: relative;
+}
+
+.card-image-wrapper{
+    width: 100%;
+    min-height: 65%;
+    background-color: var(--themeColor2);
+    color: var(--themeColor4);
+    text-transform: uppercase;
+    font-size: xx-large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 15px 15px 15px 0;
+}
+
+.card-text-wrapper{
+    padding: 0 20px;
+    box-sizing: border-box;
+    background-color: var(--lightInput);
+    z-index: 2;
+    border-radius: 15px 0 0 0;
+}
+
+
+.card-title{
+    margin: 10px 0;
+    padding: 0;
+    color: var(--themeColor1);
+}
+
+.card-text{
+    margin: 0;
+    font-size: .9em;
+    color: var(--themeColor2);
+}
+
+.card-styling{
+    width: 30px;
+    height: 30px;
+    background-color: var(--themeColor2);
+    position: absolute;
+    top: 65%;
+    z-index: 1;
+}
+
+
 /* contact section styling */
 /* contact section styling */
 /* contact section styling */

@@ -19,11 +19,16 @@ ScrollReveal().reveal(".scroll-indicator", { delay: 2000, origin: "right", dista
 
 // scroll reveal for contact section
 ScrollReveal().reveal(".contact-rule", { delay: 2000, origin: "right", reset: false});
-// scrollreveal each leetr of my name at a 200 milliseconds interval
+// scrollreveal each leter of my name at a 200 milliseconds interval
 for (let i = 1; i <= 9; i++) {
     time = 100 + 100*i;
     ScrollReveal().reveal(`.contact-${i}`, { delay: time, origin: "right", reset: true});
 }
+
+// scroll revael for cards
+ScrollReveal().reveal(".card", { delay: 750, origin: "bottom", reset: false});
+
+// scroll reveal for each input fields and submit button
 ScrollReveal().reveal(".contact-paragraph", { delay: 1000, origin: "bottom", reset: false});
 ScrollReveal().reveal("#input-name", { delay: 1100, origin: "bottom", reset: false});
 ScrollReveal().reveal("#input-email", { delay: 1200, origin: "bottom", reset: false});

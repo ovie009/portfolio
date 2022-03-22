@@ -229,6 +229,59 @@
         -->
         <canvas id="main-canvas"></canvas>
     </main>
+    <section id="skills-section">
+        <h2 class="skills-heading"> What I do? <strong>My Services</strong></h2>
+        <a class="card" href="#">
+            <div class="card-image-wrapper">
+                <span>image</span>
+            </div>
+            <div class="card-styling"></div>
+            <div class="card-text-wrapper">
+                <h3 class="card-title">Lorem, dolor.</h3>
+                <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image-wrapper">
+                <span>image</span>
+            </div>
+            <div class="card-styling"></div>
+            <div class="card-text-wrapper">
+                <h3 class="card-title">Lorem.</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, ipsam?</p>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image-wrapper">
+                <span>image</span>
+            </div>
+            <div class="card-styling"></div>
+            <div class="card-text-wrapper">
+                <h3 class="card-title">Lorem, ipsum dolor.</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet.</p>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image-wrapper">
+                <span>image</span>
+            </div>
+            <div class="card-styling"></div>
+            <div class="card-text-wrapper">
+                <h3 class="card-title">Lorem, ipsum dolor.</h3>
+                <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate fugit vitae fugiat ab molestias quos?</p>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image-wrapper">
+                <span>image</span>
+            </div>
+            <div class="card-styling"></div>
+            <div class="card-text-wrapper">
+                <h3 class="card-title">Lorem, ipsum dolor.</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+            </div>
+        </a>
+    </section>
     <section id="contact-section">
         <h2 class="contact-heading">
             <!-- Contact me -->
@@ -246,7 +299,7 @@
         <hr class="contact-rule">
         <div>
             <p class="contact-paragraph">
-                I'm interested in freelancing opportunities in web development and embedded systems projects. However if you have other request or questions, dont hesitate to use the form.
+                I'm interested in web development and embedded systems projects. However if you have other request or questions, dont hesitate to use the form.
             </p>
             <form action="#" id="contact-form">
                 <input type="text" name="name" id="input-name" class="input-fields" placeholder="name">
@@ -314,10 +367,28 @@
             let inputEmail = document.querySelector("#input-email");
             let inputSubject = document.querySelector("#input-subject");
             let inputMessage = document.querySelector("#input-message");
+            
+            // select card and card wrapper
+            let card = document.getElementsByClassName("card");
+            let cardTextWrapper = document.getElementsByClassName("card-text-wrapper");
+            // getElementsByClassName returns an array of the elements with that class name
+
+            // set input background colors
             inputName.style.backgroundColor = inputBackgroundColor;
             inputEmail.style.backgroundColor = inputBackgroundColor;
             inputSubject.style.backgroundColor = inputBackgroundColor;
             inputMessage.style.backgroundColor = inputBackgroundColor;
+            
+            //  set card background colors
+            // console.log(typeof card)
+            // console.log(card)
+            for (let index = 0; index < card.length; index++) {
+                
+                card[index].style.backgroundColor = inputBackgroundColor;
+                cardTextWrapper[index].style.backgroundColor = inputBackgroundColor;
+                
+            }
+
         }
 
     </script>
