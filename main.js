@@ -4,7 +4,10 @@
 window.onload = setTimeout(() => {
     let preorder = document.getElementById("preloader");
     preorder.style.display = "none";
-}, 1000);
+
+    alert("This Portfolio Website is still under development");
+
+}, 2000);
 
 // variable to check the dropdown state
 let dropDown = false;
