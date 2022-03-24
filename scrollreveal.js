@@ -45,4 +45,4 @@ ScrollReveal().reveal("#github-logo", { delay: 500, distance: "100px", origin: "
 ScrollReveal().reveal("#facebok-logo", { delay: 500, distance: "100px", origin: "top", reset: false});
 ScrollReveal().reveal("#whatsapp-logo", { delay: 500, distance: "100px", origin: "right", reset: false});
 ScrollReveal().reveal("#instagram-logo", { delay: 500, distance: "100px", origin: "right", reset: false});
-ScrollReveal().reveal(".footer-text", { delay: 500, origin: "bottom", reset: false});
+ScrollReveal().reveal("#footer-text", { delay: 1000, distance: "50px", origin: "bottom", reset: false});
