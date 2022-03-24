@@ -4,9 +4,11 @@
     --themeColor3 : #737373;
     --themeColor4 : #A6A6A6;
     --themeColor5 : #F2F2F2;
-    --darkInput : rgb(44, 44, 44);
-    --lightInput : rgb(248, 248, 248);
+    --darkInput : #2c2c2c;
+    --lightInput : #f8f8f8;
     --boxShadow: 1px 1px 2px 2px var(--themeColor4);
+    --dropShadow: drop-shadow(2.5px 2.5px 5px var(--themeColor4));
+/* } */
 }
 
 body{
@@ -188,22 +190,27 @@ body{
 
 /* NAV STYLING */
 header{
-    padding-top: 20px;
     width: 100vw;
     height: 70px;
     box-sizing: border-box;
     position: relative;
-    /* background-color: tomato; */
 }
 
 nav{
     box-sizing: border-box;
     width: 100%;
-    height: 100%;
+    height: 70px;
+    padding-top: 20px;
     display: flex;
     padding: 0 20px;
     align-items: center;
     justify-content: space-between;
+    background-color: var(--themeColor5);
+    position: fixed;
+    /* position: unset; */
+    z-index: 9;
+    /* border-bottom: 1px solid var(--themeColor4); */
+    box-shadow: 0px 1px 10px 1px var(--themeColor4);
 }
 
 .nav-links{
@@ -260,16 +267,16 @@ nav{
 }
 
 .drop-right-div{
-    position: absolute;
+    position: fixed;
     /* border-top: 1px solid var(--themeColor3); */
-    z-index: 3;
+    z-index: 10;
     background-color: var(--themeColor5);
     /* background-color: red; */
     bottom: 0;
     left: 100%;
     right: 0;
     width: 0;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 68px);
     transition: .5s ease;
     display: flex;
     flex-flow: column;
@@ -369,6 +376,7 @@ main{
     /* border: 1px solid var(--themeColor2); */
     background-color: transparent;
     box-shadow: var(--boxShadow);
+    /* filter: var(--dropShadow); */
     text-decoration: none;
     /* font-size: .9em; */
     box-sizing: border-box;
@@ -415,7 +423,7 @@ main{
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     gap: 25px;
 }
 
@@ -436,10 +444,12 @@ main{
     color: unset;
     width: 100%;
     height: 400px;
+    max-height: 400px;
     display: flex;
     flex-flow: column;
     max-width: 400px;
-    box-shadow: var(--boxShadow);
+    /* box-shadow: var(--boxShadow); */
+    filter: var(--dropShadow);
     position: relative;
 }
 
@@ -454,20 +464,29 @@ main{
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    border-radius: 15px 15px 15px 0;
+    border-radius: 15px 15px 0 0;
+    position: relative;
+}
+
+.card-image{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px 15px 0 0;
+    /* filter: grayscale(100%); */
 }
 
 .card-text-wrapper{
     padding: 0 20px;
     box-sizing: border-box;
+    height: 35%;
     background-color: var(--lightInput);
+    border-radius: 0 0 15px 15px;
     z-index: 2;
-    border-radius: 15px 0 0 0;
 }
 
 
 .card-title{
-    margin: 10px 0;
+    margin: 0 0 10px;
     padding: 0;
     color: var(--themeColor1);
 }
@@ -479,13 +498,12 @@ main{
 }
 
 .card-styling{
-    width: 30px;
-    height: 30px;
-    background-color: var(--themeColor2);
+    width: 100%;
     position: absolute;
-    top: 65%;
+    bottom: 0;
     z-index: 1;
 }
+
 
 
 /* contact section styling */

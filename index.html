@@ -57,11 +57,12 @@
             return "";
         }
 
+        let currentTheme;
         // function to checkCookie
         // used to check the theme set by the user
         function checkCookie() {
             // cookie variable
-            let currentTheme = getCookie("themeColor");
+            currentTheme = getCookie("themeColor");
             if (currentTheme != "") { 
                 //if cookie variable exist
                 if (currentTheme === "light") {
@@ -123,6 +124,7 @@
     </script>
     <!-- set up scroll reveal -->
     <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- scroll reavel default settings -->
     <script>
         ScrollReveal({ 
             reset: true ,
@@ -233,52 +235,63 @@
         <h2 class="skills-heading"> What I do? <strong>My Services</strong></h2>
         <a class="card" href="#">
             <div class="card-image-wrapper">
-                <span>image</span>
+                <!-- <span>image</span> -->
+                <img class="card-image" src="/images/embedded_system,.jpg" alt="">
+                <img src="/icons/light-card-base.svg" alt="" class="card-styling">
             </div>
-            <div class="card-styling"></div>
             <div class="card-text-wrapper">
-                <h3 class="card-title">Lorem, dolor.</h3>
-                <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
+                <h3 class="card-title">Arduino Projects</h3>
+                <p class="card-text">Prototypimg, building and coding Arduino based projects</p>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image-wrapper">
+                <img class="card-image" src="/images/fritxing.PNG" alt="">
+                <img src="/icons/light-card-base.svg" alt="" class="card-styling">
+            </div>
+            <div class="card-text-wrapper">
+                <h3 class="card-title">Circuit Designs</h3>
+                <p class="card-text">Circuit design and prototyping on thr Fritzing app</p>
             </div>
         </a>
         <a class="card" href="#">
             <div class="card-image-wrapper">
                 <span>image</span>
+                <img src="/icons/light-card-base.svg" alt="" class="card-styling">
             </div>
-            <div class="card-styling"></div>
             <div class="card-text-wrapper">
-                <h3 class="card-title">Lorem.</h3>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, ipsam?</p>
+                <h3 class="card-title">UI/UX Design</h3>
+                <p class="card-text">User interface and user experience design on the Figma app</p>
             </div>
         </a>
         <a class="card" href="#">
             <div class="card-image-wrapper">
                 <span>image</span>
+                <img src="/icons/light-card-base.svg" alt="" class="card-styling">
             </div>
-            <div class="card-styling"></div>
             <div class="card-text-wrapper">
-                <h3 class="card-title">Lorem, ipsum dolor.</h3>
-                <p class="card-text">Lorem ipsum dolor sit amet.</p>
-            </div>
-        </a>
-        <a class="card" href="#">
-            <div class="card-image-wrapper">
-                <span>image</span>
-            </div>
-            <div class="card-styling"></div>
-            <div class="card-text-wrapper">
-                <h3 class="card-title">Lorem, ipsum dolor.</h3>
+                <h3 class="card-title">Frontend Web Development</h3>
                 <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate fugit vitae fugiat ab molestias quos?</p>
             </div>
         </a>
         <a class="card" href="#">
             <div class="card-image-wrapper">
                 <span>image</span>
+                <img src="/icons/light-card-base.svg" alt="" class="card-styling">
             </div>
-            <div class="card-styling"></div>
             <div class="card-text-wrapper">
-                <h3 class="card-title">Lorem, ipsum dolor.</h3>
+                <h3 class="card-title">Backend Web Development</h3>
                 <p class="card-text">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+            </div>
+        </a>
+        <a class="card" href="#">
+            <div class="card-image-wrapper">
+                <span>image</span>
+                <img src="/icons/light-card-base.svg" alt="" class="card-styling">
+            </div>
+            <div class="card-text-wrapper">
+                <h3 class="card-title">Something Fun</h3>
+                <p class="card-text">Check out my cool designs on CSSBattle</p>
             </div>
         </a>
     </section>
@@ -371,6 +384,7 @@
             // select card and card wrapper
             let card = document.getElementsByClassName("card");
             let cardTextWrapper = document.getElementsByClassName("card-text-wrapper");
+            let cardStyling = document.getElementsByClassName("card-styling");
             // getElementsByClassName returns an array of the elements with that class name
 
             // set input background colors
@@ -386,6 +400,7 @@
                 
                 card[index].style.backgroundColor = inputBackgroundColor;
                 cardTextWrapper[index].style.backgroundColor = inputBackgroundColor;
+                cardStyling[index].src = `icons/${currentTheme}-card-base.svg`;
                 
             }
 

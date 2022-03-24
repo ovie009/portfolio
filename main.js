@@ -10,7 +10,7 @@ window.onload = setTimeout(() => {
 let dropDown = false;
 // variable to check the previously selected theme
 // theme set as "light"  by default
-let currentTheme = getCookie("themeColor");
+currentTheme = getCookie("themeColor");
 // varaibale to select the dropdown icon
 let dropDownIcon = document.querySelector("#drop-right");
 // varaibale to select the themeIcon icon
@@ -77,7 +77,7 @@ function dropRight() {
         // change dropdown state
         dropDown = false;
     }
-    console.log(dropDown);
+    // console.log(dropDown);
 }
 
 // change theme function
@@ -130,6 +130,7 @@ function changeTheme() {
         // select card and card wrapper
         let card = document.getElementsByClassName("card");
         let cardTextWrapper = document.getElementsByClassName("card-text-wrapper");
+        let cardStyling = document.getElementsByClassName("card-styling");
 
         // set inout background colors
         inputName.style.backgroundColor = inputBackgroundColor;
@@ -141,10 +142,12 @@ function changeTheme() {
         //  set card background colors
         // console.log(typeof card)
         // console.log(card)
+        currentTheme = getCookie("themeColor");
         for (let index = 0; index < card.length; index++) {
             
             card[index].style.backgroundColor = inputBackgroundColor;
             cardTextWrapper[index].style.backgroundColor = inputBackgroundColor;
+            cardStyling[index].src = `icons/${currentTheme}-card-base.svg`;
             
         }
         
@@ -192,6 +195,7 @@ function changeTheme() {
         // select card and card wrapper
         let card = document.getElementsByClassName("card");
         let cardTextWrapper = document.getElementsByClassName("card-text-wrapper");
+        let cardStyling = document.getElementsByClassName("card-styling");
 
         // set inout background colors
         inputName.style.backgroundColor = inputBackgroundColor;
@@ -202,10 +206,12 @@ function changeTheme() {
         //  set card background colors
         // console.log(typeof card)
         // console.log(card)
+        currentTheme = getCookie("themeColor");
         for (let index = 0; index < card.length; index++) {
             
             card[index].style.backgroundColor = inputBackgroundColor;
             cardTextWrapper[index].style.backgroundColor = inputBackgroundColor;
+            cardStyling[index].src = `icons/${currentTheme}-card-base.svg`;
             
         }
         
@@ -214,4 +220,32 @@ function changeTheme() {
     
     // console.log(getCookie("themeColor"));
 }
+
+
+var lastScrollTop = 0;
+// element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
+window.addEventListener("scroll", function(){ // or window.addEventListener("scroll"....
+   var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+   let nav = document.querySelector("nav");
+   if (st > lastScrollTop){
+      // downscroll code
+      //nav.style.position = "unset";
+      for (let i = 0; i < 70; i++) {
+        let inv = 70 - i;
+        nav.style.top = `-${i}px`;
+        nav.style.height = `${inv}px`;
+      }
+    //   console.log("scrolling down");
+    } else {
+        // upscroll code
+        for (let i = 0; i < 70; i++) {
+            let inv = 70 - i;
+            nav.style.top = `-${inv}px`;
+            nav.style.height = `${i}px`;
+        }
+        // console.log("scrolling up");
+   }
+    //if st is less than or equal to 0, let lastScrollTop be equal to 0, else let it be equal to st
+   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+}, false);
 

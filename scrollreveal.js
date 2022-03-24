@@ -3,12 +3,14 @@ ScrollReveal().reveal(".setup-text", { delay: 250, origin: "left", reset: false}
 ScrollReveal().reveal(".follow-up-text", { delay: 250, origin: "bottom", reset: false});
 ScrollReveal().reveal(".about-me", { delay: 250, origin: "bottom", reset: false});
 ScrollReveal().reveal(".contact-me", { delay: 1000, origin: "bottom", distance: "120px" , reset: false});
+
+// nav elements scrollreveal
 ScrollReveal().reveal("#logo", { delay: 100, origin: "left", reset: false});
 ScrollReveal().reveal(".drop-right:nth-child(1)", { delay: 100, origin: "top", reset: false});
 ScrollReveal().reveal(".drop-right:nth-child(2)", { delay: 100, origin: "right", reset: false});
 
 let time;
-// scrollreveal each leetr of my name at a 200 milliseconds interval
+// scrollreveal each letter of my name at a 200 milliseconds interval
 for (let i = 1; i <= 9; i++) {
     time = 200 + 200*i;
     ScrollReveal().reveal(`.name-${i}`, { delay: time, origin: "right" , reset: true});
@@ -26,7 +28,7 @@ for (let i = 1; i <= 9; i++) {
 }
 
 // scroll revael for cards
-ScrollReveal().reveal(".card", { delay: 750, origin: "bottom", reset: false});
+ScrollReveal().reveal(".card", { delay: 1000, distance: "50px", origin: "bottom", reset: false});
 
 // scroll reveal for each input fields and submit button
 ScrollReveal().reveal(".contact-paragraph", { delay: 1000, origin: "bottom", reset: false});
