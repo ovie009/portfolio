@@ -1,3 +1,5 @@
+alert("This Portfolio Website is still under development");
+
 // select canvas element
 let mainCanvas = document.querySelector("#main-canvas");
 // get 2d context
