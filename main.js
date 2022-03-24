@@ -232,7 +232,7 @@ if ( dropDown === false ) {
     window.addEventListener("scroll", function(){ // or window.addEventListener("scroll"....
        var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
        let nav = document.querySelector("nav");
-       if (st > lastScrollTop && dropDown){
+       if (st > lastScrollTop){
           // downscroll code
           //nav.style.position = "unset";
           for (let i = 0; i < 70; i++) {
@@ -258,5 +258,6 @@ if ( dropDown === false ) {
     let nav = document.querySelector("nav");
     nav.style.top = `0px`;
     nav.style.height = `70px`;
+    nav.style.position = `fixed`;
     
 }
