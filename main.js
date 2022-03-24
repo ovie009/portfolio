@@ -50,6 +50,9 @@ function dropRight() {
                 dropDiv.style.left = `${inv}%`;
             }
         }
+        // remove box shadow on nav after the drop right div slides in
+        let nav = document.querySelector("nav");
+        nav.style.boxShadow = "none";
         // change dropdown state
         dropDown = true;
     } else {
@@ -77,6 +80,10 @@ function dropRight() {
             // dropDiv.style.display = `none`;
             dropDiv.style.padding = `0px`;
         }
+        
+        // replace box shadow on nav after the drop right div slides out
+        let nav = document.querySelector("nav");
+        nav.style.boxShadow = "0px 1px 10px 1px var(--themeColor4)";
         // change dropdown state
         dropDown = false;
     }
