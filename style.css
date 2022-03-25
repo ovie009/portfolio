@@ -389,7 +389,7 @@ main{
     font-size: .8em;
     color: var(--themeColor1);
     position: absolute;
-    bottom: 50px;
+    bottom: 70px;
     right: -10px;
     transform: rotateZ(90deg);
     animation-name: scrollDown;
@@ -399,9 +399,9 @@ main{
 }
 
 @keyframes scrollDown {
-    0% {bottom: 50px;}
-    50% {bottom: 70px;}
-    100% {bottom: 50px;}
+    0% {bottom: 70px;}
+    50% {bottom: 90px;}
+    100% {bottom: 70px;}
 }
 
 #main-canvas{
@@ -471,10 +471,15 @@ main{
 
 .card-image{
     width: 100%;
+    /* width: 400px; */
     height: 100%;
     border-radius: 15px 15px 0 0;
     object-fit: cover;
     /* filter: grayscale(80%); */
+}
+
+#circuit-image{
+    object-position: 20% 70%;
 }
 
 .card-text-wrapper{
