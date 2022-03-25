@@ -389,7 +389,7 @@ main{
     font-size: .8em;
     color: var(--themeColor1);
     position: absolute;
-    bottom: 30px;
+    bottom: 50px;
     right: -10px;
     transform: rotateZ(90deg);
     animation-name: scrollDown;
@@ -399,9 +399,9 @@ main{
 }
 
 @keyframes scrollDown {
-    0% {bottom: 30px;}
-    50% {bottom: 50px;}
-    100% {bottom: 30px;}
+    0% {bottom: 50px;}
+    50% {bottom: 70px;}
+    100% {bottom: 50px;}
 }
 
 #main-canvas{
