@@ -5,9 +5,9 @@ window.onload = setTimeout(() => {
     let preorder = document.getElementById("preloader");
     preorder.style.display = "none";
 
-    alert("This Portfolio Website is still under development");
+    // alert("This Portfolio Website is still under development");
 
-}, 2000);
+}, 1000);
 
 // variable to check the dropdown state
 let dropDown = false;
@@ -232,30 +232,35 @@ function changeTheme() {
 }
 
 
-// var lastScrollTop = 0;
-// // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
-// window.addEventListener("scroll", function(){ // or window.addEventListener("scroll"....
-//     var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
-//     let nav = document.querySelector("nav");
-//     if (st > lastScrollTop && dropDown === false){
-//         // downscroll code
-//         //nav.style.position = "unset";
-//         for (let i = 0; i < 70; i++) {
-//             let inv = 70 - i;
-//             nav.style.top = `-${i}px`;
-//             nav.style.height = `${inv}px`;
-//         }
-//         //   console.log("scrolling down");
-//     } else {
-//         // upscroll code
-//         for (let i = 0; i < 70; i++) {
-//             let inv = 70 - i;
-//             nav.style.top = `-${inv}px`;
-//             nav.style.height = `${i}px`;
-//         }
-//         // console.log("scrolling up");
-//     }
-//     //if st is less than or equal to 0, let lastScrollTop be equal to 0, else let it be equal to st
-//     lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-// }, false);
+var lastScrollTop = 0;
+window.addEventListener("scroll", function(){
+    let nav = document.querySelector("nav");
+    // if dropDown menu hasn't been clicked
+    if (dropDown === false) {
+        var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+        if (st > lastScrollTop){
+            // downscroll code
+            //nav.style.position = "unset";
+            for (let i = 0; i < 70; i++) {
+                let inv = 70 - i;
+                nav.style.top = `-${i}px`;
+                nav.style.height = `${inv}px`;
+            }
+            //   console.log("scrolling down");
+        } else {
+            // upscroll code
+            for (let i = 0; i < 70; i++) {
+                let inv = 70 - i;
+                nav.style.top = `-${inv}px`;
+                nav.style.height = `${i}px`;
+            }
+            // console.log("scrolling up");
+        }
+        //if st is less than or equal to 0, let lastScrollTop be equal to 0, else let it be equal to st
+        lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+    } else {
+        nav.style.top = `0px`;
+        nav.style.height = `70px`;
+    }
+}, false);
 
