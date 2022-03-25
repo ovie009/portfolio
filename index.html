@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ovie Portfolio</title>
+    <title>Iffie Ovie</title>
+    <link rel="shortcut icon" href="favicon/android-chrome-512x512.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -236,7 +237,7 @@
         <a class="card" href="#">
             <div class="card-image-wrapper">
                 <!-- <span>image</span> -->
-                <img class="card-image" src="images/embedded_system,.jpg" alt="">
+                <img class="card-image" src="images/embedded_system,.jpg" alt="Embedded Systems Part">
                 <img src="icons/light-card-base.svg" alt="" class="card-styling">
             </div>
             <div class="card-text-wrapper">
@@ -246,7 +247,7 @@
         </a>
         <a class="card" href="#">
             <div class="card-image-wrapper">
-                <img class="card-image" src="images/fritxing.PNG" alt="">
+                <img class="card-image" src="images/fritxing.PNG" alt="Fritzing Circuit Design">
                 <img src="icons/light-card-base.svg" alt="" class="card-styling">
             </div>
             <div class="card-text-wrapper">
@@ -256,7 +257,7 @@
         </a>
         <a class="card" href="#">
             <div class="card-image-wrapper">
-                <span>image</span>
+                <img class="card-image" src="images/UI_UX_1.jpeg" alt="UI/UX Design">
                 <img src="icons/light-card-base.svg" alt="" class="card-styling">
             </div>
             <div class="card-text-wrapper">
@@ -266,32 +267,34 @@
         </a>
         <a class="card" href="#">
             <div class="card-image-wrapper">
-                <span>image</span>
+                <img class="card-image" src="images/frontend.jpeg" alt="HTML and CSS">
                 <img src="icons/light-card-base.svg" alt="" class="card-styling">
             </div>
             <div class="card-text-wrapper">
                 <h3 class="card-title">Frontend Web Development</h3>
-                <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate fugit vitae fugiat ab molestias quos?</p>
+                <p class="card-text">Programming the part of websites users can see and interact with using web langauges like HTML, CSS and Javascript</p>
             </div>
         </a>
         <a class="card" href="#">
             <div class="card-image-wrapper">
-                <span>image</span>
+                <img class="card-image" src="images/backend.jpeg" alt="PHP Code">
                 <img src="icons/light-card-base.svg" alt="" class="card-styling">
             </div>
             <div class="card-text-wrapper">
                 <h3 class="card-title">Backend Web Development</h3>
-                <p class="card-text">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                <p class="card-text">
+                    Programming the server side of a website with languages like PHP, MySQl, AJAX etc.
+                </p>
             </div>
         </a>
         <a class="card" href="#">
             <div class="card-image-wrapper">
-                <span>image</span>
+                <img class="card-image" src="images/css_battle.png" alt="CSS Battle">
                 <img src="icons/light-card-base.svg" alt="" class="card-styling">
             </div>
             <div class="card-text-wrapper">
                 <h3 class="card-title">Something Fun</h3>
-                <p class="card-text">Check out my cool designs on CSSBattle</p>
+                <p class="card-text">Challenge me to a CSSBattle <span class="card-emoji" id="moon-emoji">&#127770</span> <span class="card-emoji" id="sun-emoji">&#127773</span> </p>
             </div>
         </a>
     </section>
@@ -386,6 +389,13 @@
             let cardTextWrapper = document.getElementsByClassName("card-text-wrapper");
             let cardStyling = document.getElementsByClassName("card-styling");
             // getElementsByClassName returns an array of the elements with that class name
+            
+            // select card emojis
+            let moonEmoji = document.querySelector("#moon-emoji");
+            let sunEmoji = document.querySelector("#sun-emoji");
+            moonEmoji.style.display = "none ";
+            sunEmoji.style.display = "inline ";
+            // display sun emoji for dark theme, and make moon emoji invisible
 
             // set input background colors
             inputName.style.backgroundColor = inputBackgroundColor;

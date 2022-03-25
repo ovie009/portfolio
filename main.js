@@ -160,6 +160,13 @@ function changeTheme() {
             cardStyling[index].src = `icons/${currentTheme}-card-base.svg`;
             
         }
+
+        // select card emojis
+        let moonEmoji = document.querySelector("#moon-emoji");
+        let sunEmoji = document.querySelector("#sun-emoji");
+        moonEmoji.style.display = "none ";
+        sunEmoji.style.display = "inline ";
+        // display sun emoji for dark theme, and make moon emoji invisible
         
     } else {
         // if theme is dark, it is being switched to light
@@ -224,6 +231,13 @@ function changeTheme() {
             cardStyling[index].src = `icons/${currentTheme}-card-base.svg`;
             
         }
+
+        // select card emojis
+        let moonEmoji = document.querySelector("#moon-emoji");
+        let sunEmoji = document.querySelector("#sun-emoji");
+        moonEmoji.style.display = "inline ";
+        sunEmoji.style.display = "none";
+        // display moon emoji for light theme, and make sun emoji invisible
         
     }
 
@@ -233,6 +247,7 @@ function changeTheme() {
 
 
 var lastScrollTop = 0;
+// function to remove nav when scrolling down and replace it back when scrolling up 
 window.addEventListener("scroll", function(){
     let nav = document.querySelector("nav");
     // if dropDown menu hasn't been clicked

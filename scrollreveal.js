@@ -5,9 +5,9 @@ ScrollReveal().reveal(".about-me", { delay: 250, origin: "bottom", reset: false}
 ScrollReveal().reveal(".contact-me", { delay: 1000, origin: "bottom", distance: "120px" , reset: false});
 
 // nav elements scrollreveal
-ScrollReveal().reveal("#logo", { delay: 100, origin: "left", reset: false});
-ScrollReveal().reveal(".drop-right:nth-child(1)", { delay: 100, origin: "top", reset: false});
-ScrollReveal().reveal(".drop-right:nth-child(2)", { delay: 100, origin: "right", reset: false});
+// ScrollReveal().reveal("#logo", { delay: 100, origin: "left", reset: false});
+// ScrollReveal().reveal(".drop-right:nth-child(1)", { delay: 100, origin: "top", reset: false});
+// ScrollReveal().reveal(".drop-right:nth-child(2)", { delay: 100, origin: "right", reset: false});
 
 let time;
 // scrollreveal each letter of my name at a 200 milliseconds interval
