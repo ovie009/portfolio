@@ -3,7 +3,7 @@ let mainCanvas = document.querySelector("#main-canvas");
 // get 2d context
 let ctx = mainCanvas.getContext("2d");
 mainCanvas.width = window.innerWidth;
-mainCanvas.height = window.innerHeight - 70;
+mainCanvas.height = window.innerHeight;
 
 // width of the canvas
 let cw = mainCanvas.width;

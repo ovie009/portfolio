@@ -334,7 +334,7 @@ main{
     color: var(--themeColor2);
     font-family: poppins;
     font-weight: 400;
-    height: 400px;
+    height: 350px;
 }
 
 .setup-text{
@@ -390,7 +390,7 @@ main{
     color: var(--themeColor1);
     position: absolute;
     bottom: 30px;
-    left: -10px;
+    right: -10px;
     transform: rotateZ(90deg);
     animation-name: scrollDown;
     animation-duration: 2s;
