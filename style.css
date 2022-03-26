@@ -260,6 +260,10 @@ nav{
     padding: 0;
 }
 
+#change-theme, #drop-right{
+    transition: 1s ease-in;
+}
+
 #button-canvas{
     /* border: red solid 1px; */
     width: 30px;
