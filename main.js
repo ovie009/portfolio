@@ -283,6 +283,5 @@ let contactSection = document.querySelector("#contact-section");
 console.log({contactSection});
 
 function scrollToContact() {
-    
     contactSection.scrollIntoView({behavior: "smooth", block: "start"})
 }
