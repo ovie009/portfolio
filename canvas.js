@@ -110,7 +110,7 @@ function animate() {
         snow.update();
     });
 
-    // console.log(snow);
+    // console.log(document.body);
 }
 
 // delay the time the animation starts by 1 seconds
