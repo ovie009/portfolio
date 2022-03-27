@@ -117,7 +117,7 @@ function initStack() {
     let numberOfStackBalls = myStack.length;
     for (let i = 0; i < numberOfStackBalls; i++) {
         let text = myStack[i];
-        let fontSize=20;
+        let fontSize=25;
         let fontFace='poppins';
         // let lineHeight=parseInt(fontSize*1.286);
         let words = text.split(' ');
@@ -141,9 +141,10 @@ function initStack() {
             x: dx,
             y: dy
         }
-        let fontColor = themeColors[4];
+        let fontColor = themeColors[0];
         let ballStroke = themeColors[2];
-        let ballFill = themeColors[1];
+        let ballFill = themeColors[3];
+        
         let mass = 1;
         
         if (i != 0) {
