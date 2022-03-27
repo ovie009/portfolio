@@ -327,6 +327,7 @@ main{
     min-height: calc(100vh - 70px);
 }
 
+
 .main-heading{
     width: 100%;
     overflow: hidden;
@@ -338,7 +339,7 @@ main{
     color: var(--themeColor2);
     font-family: poppins;
     font-weight: 400;
-    height: 350px;
+    height: 320px;
 }
 
 .setup-text{
@@ -533,7 +534,7 @@ main{
 /* stack section */
 #stack-section{
     border-top: 1px solid var(--themeColor4);
-    padding: 10px 20px;
+    padding: 0px;
     box-sizing: border-box;
     display: flex;
     color: var(--themeColor1);
@@ -544,13 +545,13 @@ main{
 
 .stack-column{
     width: 100%;
-    height: 400px;
-    max-height: 400px;
+    height: fit-content;
+    max-height: fit-content;
     display: flex;
     flex-flow: column;
     max-width: 400px;
     /* box-shadow: var(--boxShadow); */
-    filter: var(--dropShadow);
+    filter: drop-shadow( var(--dropShadow) );
 }
 .stack-heading{
     font-weight: 400;
@@ -560,7 +561,8 @@ main{
 }
 
 #stack-canvas{
-    border: 1px solid red;
+    /* border: 1px solid var(--themeColor3); */
+    box-shadow: var(--boxShadow);
 }
 
 
