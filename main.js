@@ -167,6 +167,14 @@ function changeTheme() {
         moonEmoji.style.display = "none ";
         sunEmoji.style.display = "inline ";
         // display sun emoji for dark theme, and make moon emoji invisible
+
+        for (let j = 0; j < stackArray.length; j++) {
+
+            stackArray[j].fontColor = colorArray[0];
+            stackArray[j].ballStroke = colorArray[randomInteger(3, 6)];
+            stackArray[j].ballFill = stackArray[j].ballStroke;
+            
+        }
         
     } else {
         // if theme is dark, it is being switched to light
@@ -238,6 +246,14 @@ function changeTheme() {
         moonEmoji.style.display = "inline ";
         sunEmoji.style.display = "none";
         // display moon emoji for light theme, and make sun emoji invisible
+
+        for (let j = 0; j < stackArray.length; j++) {
+            
+            stackArray[j].fontColor = colorArray[6];
+            stackArray[j].ballStroke = colorArray[randomInteger(0, 3)];
+            stackArray[j].ballFill = stackArray[j].ballStroke;
+            
+        }
         
     }
 

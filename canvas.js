@@ -115,4 +115,6 @@ function animate() {
 window.onload = setTimeout(() => {
     init();
     animate();
+
+    console.log(stackCanvas.offsetTop)
 }, 1500);

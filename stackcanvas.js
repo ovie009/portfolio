@@ -2,10 +2,12 @@ let stackCanvas = document.querySelector("#stack-canvas");
 // get 2d context
 let ctx2 = stackCanvas.getContext("2d");
 // set canvas width and height
-
+console.log({stackCanvas})
 let card = document.querySelector(".card");
 stackCanvas.width = window.innerWidth; 
 stackCanvas.height = window.innerHeight - 200;
+
+let lastCookie = getCookie("themeColor");
 
 // width of the stack canvas
 let scw = stackCanvas.width;
@@ -27,13 +29,23 @@ let  myStack = [
     "Figma",
     "Arduino",
     "Fritzing",
-    "Graphic Design",
-    "UI/UX Design",
-    "HTML Canvas",
+    "Graphic_Design",
+    "UI/UX_Design",
+    "HTML_Canvas",
     "AJAX",
     "JQuery",
     "MySQL",
     "PhpMyAdmin"
+]
+
+let colorArray = [
+    "#2C2C2C",
+    "#262626",
+    "#595959",
+    "#737373",
+    "#A6A6A6",
+    "#F2F2F2",
+    "#F8F8F8"
 ]
 
 /**
@@ -120,7 +132,7 @@ function initStack() {
         let fontSize=25;
         let fontFace='poppins';
         // let lineHeight=parseInt(fontSize*1.286);
-        let words = text.split(' ');
+        let words = text.split('_');
         let numberOfWords = words.length;
         let wordWidths=[];
         for(let i=0;i<words.length;i++){ wordWidths.push(ctx2.measureText(words[i]).width); }
@@ -141,10 +153,26 @@ function initStack() {
             x: dx,
             y: dy
         }
-        let fontColor = themeColors[0];
-        let ballStroke = themeColors[2];
-        let ballFill = themeColors[3];
+
+        let typeArray = [
+            "stroke",
+            "stroke",
+            "fill",
+            "stroke",
+        ];
+
+        let type = typeArray[randomInteger(0, 2)]
+
+        let fontColor = colorArray[6];
+        let ballStroke = colorArray[randomInteger(0, 3)];
+        let ballFill = ballStroke;
         
+        if ( getCookie("themeColor") !== "light" ) {
+            fontColor = colorArray[0];
+            ballStroke = colorArray[randomInteger(3, 6)];
+            ballFill = ballStroke;
+        }
+
         let mass = 1;
         
         if (i != 0) {
@@ -156,7 +184,7 @@ function initStack() {
                 }
             }
         }
-        stackArray.push(new Stack(x, y, velocity, mass, radius, ballFill, ballStroke, fontColor, fontSize, fontFace, numberOfWords, words, wordWidths));
+        stackArray.push(new Stack(x, y, velocity, mass, radius, type, ballFill, ballStroke, fontColor, fontSize, fontFace, numberOfWords, words, wordWidths));
     }
 }
 
@@ -164,7 +192,7 @@ let gravity = 0.03;
 let friction = 0.9;
 
 // stack object
-function Stack(x, y, velocity, mass, radius, ballFill, ballStroke, fontColor, fontSize, fontFace, numberOfWords, words, wordWidths) {
+function Stack(x, y, velocity, mass, radius, type, ballFill, ballStroke, fontColor, fontSize, fontFace, numberOfWords, words, wordWidths) {
     this.x = x; // x coordinate of the snow ball
     this.y = y; // y coordinate of the snow ball
     this.velocity = {
@@ -174,6 +202,7 @@ function Stack(x, y, velocity, mass, radius, ballFill, ballStroke, fontColor, fo
     // this.velocity.x = velocity.x; // velocity in x dorection of the snow ball
     // this.velocity.y = velocity.y; // velocity in x dorection of the snow ball
     this.radius = radius; // radius of the snow ball
+    this.type = type;
     this.ballFill = ballFill; // color of the snow ball
     this.ballStroke = ballStroke; // color of the snow ball
     this.fontColor = fontColor; // font color of the snow ball
@@ -190,14 +219,22 @@ function Stack(x, y, velocity, mass, radius, ballFill, ballStroke, fontColor, fo
     // function to draw ths snow ball
     this.draw = function(){
         ctx2.font = this.fontsize+'px '+this.fontface;
-        ctx2.fillStyle = this.ballFill;
-        ctx2.strokeStyle = this.ballStroke;
         ctx2.beginPath();
         ctx2.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx2.closePath();
-        ctx2.stroke();
-        ctx2.fill();
-        ctx2.fillStyle = this.fontColor; // font color to write the text with
+        ctx2.lineWidth = 3;
+        if (this.type === "fill") {
+            ctx2.fillStyle = this.ballFill;
+            ctx2.strokeStyle = this.ballStroke;
+            ctx2.fill();
+            ctx2.stroke();
+            ctx2.fillStyle = this.fontColor; // font color to write the text with
+        } else if (this.type === "stroke") {
+            ctx2.strokeStyle = this.ballStroke;
+            ctx2.stroke();
+            ctx2.fillStyle = this.ballStroke; // font color to write the text with
+        }
+            
         ctx2.textBaseline = "center";
         if ( this.numberOfWords === 1 ) {
             
@@ -234,6 +271,16 @@ function Stack(x, y, velocity, mass, radius, ballFill, ballStroke, fontColor, fo
                 // console.log("has collided");
                 
                 resolveCollision(this, stackArray[i]);
+
+                if (this.type !== stackArray[i].type) {
+                    if (this.type == 'fill') {
+                        this.type = 'stroke';
+                        stackArray[i].type = 'fill';
+                    } else {
+                        this.type = 'fill';
+                        stackArray[i].type = 'stroke';
+                    }
+                }
             }
         }
 
@@ -255,6 +302,8 @@ function Stack(x, y, velocity, mass, radius, ballFill, ballStroke, fontColor, fo
         // incresing y coordinate by the speed in the y direction, dy
         this.y += this.velocity.y ;
         // this.draw();
+
+        
     }
 }
 
@@ -274,6 +323,5 @@ function animateStack() {
 window.onload = setTimeout(() => {
     initStack();
     animateStack();
-}, 2000);
-
+}, 5000);
 
