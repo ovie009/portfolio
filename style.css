@@ -568,7 +568,9 @@ main{
 
 #stack-canvas{
     /* border: 1px solid var(--themeColor3); */
-    box-shadow: var(--boxShadow);
+    /* box-shadow: var(--boxShadow); */
+    padding: 0;
+    margin: 0;
 }
 
 
