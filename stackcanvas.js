@@ -129,7 +129,7 @@ function initStack() {
     let numberOfStackBalls = myStack.length;
     for (let i = 0; i < numberOfStackBalls; i++) {
         let text = myStack[i];
-        let fontSize=25;
+        let fontSize = 10;
         let fontFace='poppins';
         // let lineHeight=parseInt(fontSize*1.286);
         let words = text.split('_');
@@ -137,11 +137,11 @@ function initStack() {
         let wordWidths=[];
         for(let i=0;i<words.length;i++){ wordWidths.push(ctx2.measureText(words[i]).width); }
 
-        let radius = randomFloat(30, 40);
+        let radius = randomFloat(32, 42);
         // if word width is creater than diameter of the ball, let radiusbe equall to 10px plus word width
         wordWidths.forEach(width => {
-            if (width > 2*radius - 5) {
-                radius = width/2 + 12.5;
+            if (width > (2*radius - 5)) {
+                radius = width/2 + 15;
             }
         });
         // generating random values for each of the properties of the snow ball
@@ -218,11 +218,11 @@ function Stack(x, y, velocity, mass, radius, type, ballFill, ballStroke, fontCol
 
     // function to draw ths snow ball
     this.draw = function(){
-        ctx2.font = this.fontsize+'px '+this.fontface;
+        ctx2.font = this.fontSize+'px '+this.fontFace;
         ctx2.beginPath();
         ctx2.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx2.closePath();
-        ctx2.lineWidth = 3;
+        ctx2.lineWidth = 2;
         if (this.type === "fill") {
             ctx2.fillStyle = this.ballFill;
             ctx2.strokeStyle = this.ballStroke;
@@ -240,19 +240,17 @@ function Stack(x, y, velocity, mass, radius, type, ballFill, ballStroke, fontCol
             
             for (let i = 0; i < this.words.length; i++) {
                 let textY = this.y + this.fontSize/4;
-                let textX = this.x - this.wordWidths[i]/2;
+                let textX = this.x - 2 - this.wordWidths[i]/2;
 
-                // console.log(textX)
-                // console.log(textY)
                 ctx2.fillText(this.words[i], textX, textY);
                 
             }
             
         } else if ( this.numberOfWords === 2 ){
             
-            let textY = this.y;
+            let textY = this.y - this.fontSize/4;
             for (let i = 0; i < this.words.length; i++) {
-                let textX = this.x - this.wordWidths[i]/2;
+                let textX = this.x - 2 - this.wordWidths[i]/2;
                 ctx2.fillText(this.words[i], textX, textY);
                 textY = textY + 16;
             }

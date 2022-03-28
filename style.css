@@ -551,13 +551,19 @@ main{
     flex-flow: column;
     max-width: 400px;
     /* box-shadow: var(--boxShadow); */
-    filter: drop-shadow( var(--dropShadow) );
+    /* filter: drop-shadow( var(--dropShadow) ); */
 }
+
 .stack-heading{
-    font-weight: 400;
-    font-size: 2em;
+    /* font-weight: 600; */
+    font-size: 20px;
     margin: 0;
+    padding: 20px 20px 10px;
     color: var(--themeColor2);
+}
+
+.stack-heading em{
+    font-weight: 300;
 }
 
 #stack-canvas{
