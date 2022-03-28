@@ -540,7 +540,7 @@ main{
     color: var(--themeColor1);
     justify-content: flex-start;
     flex-flow: row wrap;
-    gap: 25px;
+    /* gap: 25px; */
 }
 
 .stack-column{
@@ -549,7 +549,7 @@ main{
     max-height: fit-content;
     display: flex;
     flex-flow: column;
-    max-width: 400px;
+    /* max-width: 400px; */
     /* box-shadow: var(--boxShadow); */
     /* filter: drop-shadow( var(--dropShadow) ); */
 }
