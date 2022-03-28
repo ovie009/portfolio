@@ -2,8 +2,9 @@ let stackCanvas = document.querySelector("#stack-canvas");
 // get 2d context
 let ctx2 = stackCanvas.getContext("2d");
 // set canvas width and height
-console.log({stackCanvas})
-let card = document.querySelector(".card");
+// console.log({stackCanvas})
+
+// set width and height of the canvas
 stackCanvas.width = window.innerWidth; 
 stackCanvas.height = window.innerHeight - 200;
 
@@ -43,6 +44,7 @@ for (let i = 0; i < 50; i++) {
     myStack.push("blank");
 }
 
+// color array storing the theme colors for the balls
 let colorArray = [
     "#2C2C2C",
     "#262626",
@@ -53,6 +55,7 @@ let colorArray = [
     "#F8F8F8"
 ]
 
+// utility functions for the collision fo the balls
 /**
  * Rotates coordinate system for velocities
  *
@@ -61,9 +64,9 @@ let colorArray = [
  * @param  Object | velocity | The velocity of an individual particle
  * @param  Float  | angle    | The angle of collision between two objects in radians
  * @return Object | The altered x and y velocities after the coordinate system has been rotated
- */
+*/
 
- function rotate(velocity, angle) {
+function rotate(velocity, angle) {
     const rotatedVelocities = {
         x: velocity.x * Math.cos(angle) - velocity.y * Math.sin(angle),
         y: velocity.x * Math.sin(angle) + velocity.y * Math.cos(angle)
@@ -79,7 +82,7 @@ let colorArray = [
  * @param  Object | particle      | A particle object with x and y coordinates, plus velocity
  * @param  Object | otherParticle | A particle object with x and y coordinates, plus velocity
  * @return Null | Does not return a value
- */
+*/
 
 function resolveCollision(particle, otherParticle) {
     const xVelocityDiff = particle.velocity.x - otherParticle.velocity.x;
@@ -130,28 +133,30 @@ let stackArray = [];
 
 // function that initializes the stack object 
 function initStack() {
-    // variable to control number of stackballs
+    // variable to select number of stackballs = number of elements in myStack array
     let numberOfStackBalls = myStack.length;
     for (let i = 0; i < numberOfStackBalls; i++) {
-        let text = myStack[i];
-        let fontSize = 10;
-        let fontFace='poppins';
-        // let lineHeight=parseInt(fontSize*1.286);
-        let words = text.split('_');
-        let numberOfWords = words.length;
-        let wordWidths=[];
-        for(let i=0;i<words.length;i++){ wordWidths.push(ctx2.measureText(words[i]).width); }
-        let radius;
+        let text = myStack[i]; //select stack text
+        let fontSize = 10; // set font size
+        let fontFace='poppins'; // set font family
+        // let lineHeight=parseInt(fontSize*1.286); // get line height
+        let words = text.split('_'); // split two words text where '_' appears and store the resulting array in words variable
+        let numberOfWords = words.length; // get the number of words in words array
+        let wordWidths=[]; // array to store the width of each word in the words array
+        for(let i=0;i<words.length;i++){ wordWidths.push(ctx2.measureText(words[i]).width); } // store word width in wordWidths array
+        let radius; // declare radius variable, which determines the radius of the balls
+        // setting the radius of the ball around "PhpMyAdmin" manually 
+        //because the code to auto generate the radius wasnt making the ball big enough
         if (text == "PhpMyAdmin") {
             // large cirlce 
             radius = 42;
-        } else if (text == "blank"){ 
+        } else if (text == "blank"){ // if text is "blank" generate radius of smaller sizes
             // small circle
             radius = randomInteger(2, 8);
-        }else{
-            radius = randomFloat(32, 42);
-            // if word width is creater than diameter of the ball, let radius be equall to 10px plus word width
+        }else{ // else auto generate the radius for everything else
+            radius = randomFloat(32, 42); // first of all, auto generate a non integer radius between 32 and 42
             wordWidths.forEach(width => {
+                // if wordWidths is creater than diameter of the ball, increase the radius by 15px more than the wordWidth
                 if (width > (2*radius - 5)) {
                     radius = width/2 + 15;
                 }
@@ -159,8 +164,11 @@ function initStack() {
             
         }
         // generating random values for each of the properties of the snow ball
+        // generating random x position within the canvas width, taking the radius of the ball into account
         let x = randomInteger(radius, scw - radius);
+        // generating random y position within the canvas width, taking the radius of the ball into account
         let y = randomInteger(radius, sch - radius);
+        // generating random speed in both x and y direction between -0.9 and 0.9
         let dx = randomFloat(-0.9, 0.9);
         let dy = randomFloat(-0.9, 0.9);
         let velocity = {
@@ -168,27 +176,39 @@ function initStack() {
             y: dy
         }
 
+        // type of balls to be displayed in the canvas, stroke and fill
+        // stroke balls have a stroke around the diameter
+        // fill has a solid color fill
+        // the type of ball would be selected from this array at random
+        //  at a ration of 4:1 in favour of the stroke
         let typeArray = [
             "stroke",
             "stroke",
             "fill",
             "stroke",
+            "stroke"
         ];
 
-        let type = typeArray[randomInteger(0, 2)]
+        // select ball type
+        let type = typeArray[randomInteger(0, 4)]
 
-        let fontColor = colorArray[6];
-        let ballStroke = colorArray[randomInteger(0, 3)];
-        let ballFill = ballStroke;
-        
+        // select defaul colours
+        let fontColor = colorArray[6]; // lightest colour in the array as font colour
+        let ballStroke = colorArray[randomInteger(0, 3)]; // select any colour from the 4 darkest colour as stroke color
+        let ballFill = ballStroke; // let stroke colour be equall to fill colour
+
+        // set colours for dark theme, if darktheme is set in cookie when the poge loads
         if ( getCookie("themeColor") !== "light" ) {
-            fontColor = colorArray[0];
-            ballStroke = colorArray[randomInteger(3, 6)];
-            ballFill = ballStroke;
+            fontColor = colorArray[0]; // darkest colors in the array as font colour
+            ballStroke = colorArray[randomInteger(3, 6)]; // select any colour from the 4 lightest colour as stroke color
+            ballFill = ballStroke; // let stroke colour be equall to fill colour
         }
 
         let mass = 1;
+        // set mass of ball, useful for elastic collision function
         
+        // function to check if the new ball is spawned on top of another ball
+        // if it is generate new position for x and y
         if (i != 0) {
             for (let j = 0; j < stackArray.length; j++) {
                 if ( distanceBetween(x, stackArray[j].x, y, stackArray[j].y) < radius + stackArray[j].radius ) {
@@ -198,7 +218,7 @@ function initStack() {
                 }
             }
         }
-
+        // push into stack array
         stackArray.push(new Stack(x, y, velocity, mass, radius, type, ballFill, ballStroke, fontColor, fontSize, fontFace, numberOfWords, words, wordWidths));
     }
 }
@@ -210,7 +230,7 @@ let friction = 0.9;
 function Stack(x, y, velocity, mass, radius, type, ballFill, ballStroke, fontColor, fontSize, fontFace, numberOfWords, words, wordWidths) {
     this.x = x; // x coordinate of the snow ball
     this.y = y; // y coordinate of the snow ball
-    this.velocity = {
+    this.velocity = { // velocity of snow ball
         x: velocity.x,
         y: velocity.y
     }
@@ -227,46 +247,46 @@ function Stack(x, y, velocity, mass, radius, type, ballFill, ballStroke, fontCol
     this.numberOfWords = numberOfWords; // font family
     this.words = words; // words in my stack
     this.wordWidths = wordWidths; // word widths
-    this.gravity = gravity;
-    this.friction = friction;
-    this.mass = mass;
+    this.gravity = gravity; // gravity
+    this.friction = friction; // friction
+    this.mass = mass; // mass
 
     // function to draw ths snow ball
     this.draw = function(){
-        ctx2.font = this.fontSize+'px '+this.fontFace;
-        ctx2.beginPath();
-        ctx2.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx2.closePath();
-        ctx2.lineWidth = 2;
-        if (this.type === "fill") {
-            ctx2.fillStyle = this.ballFill;
-            ctx2.strokeStyle = this.ballStroke;
-            ctx2.fill();
-            ctx2.stroke();
+        ctx2.font = this.fontSize+'px '+this.fontFace; //set font property
+        ctx2.beginPath(); // beginn draw path
+        ctx2.arc(this.x, this.y, this.radius, 0, Math.PI * 2); // draw arc
+        ctx2.closePath(); // close path
+        ctx2.lineWidth = 2; //set linewidth
+        // set properties for balls with fill type
+        if (this.type === "fill") { 
+            ctx2.fillStyle = this.ballFill; // ball fill color
+            ctx2.strokeStyle = this.ballStroke; // ball stroke colour
+            ctx2.fill(); // fill ball
+            ctx2.stroke(); // stroke ball
             ctx2.fillStyle = this.fontColor; // font color to write the text with
-        } else if (this.type === "stroke") {
-            ctx2.strokeStyle = this.ballStroke;
-            ctx2.stroke();
+        } else if (this.type === "stroke") { // set properties for balls with stroke type
+            ctx2.strokeStyle = this.ballStroke; // stroke colour
+            ctx2.stroke(); // stroke ball
             ctx2.fillStyle = this.ballStroke; // font color to write the text with
         }
             
-        ctx2.textBaseline = "center";
-        if ( this.numberOfWords === 1 ) {
+        ctx2.textBaseline = "center"; // set text position
+        if ( this.numberOfWords === 1 ) { // text placement in the ball if it has only 1 word
             
-            for (let i = 0; i < this.words.length; i++) {
-                let textY = this.y + this.fontSize/4;
-                let textX = this.x - 2 - this.wordWidths[i]/2;
+            for (let i = 0; i < this.words.length; i++) { //looping through the number of words for redundacy, already know its 1
+                let textY = this.y + this.fontSize/4; // y position of the text
+                let textX = this.x - 2 - this.wordWidths[i]/2; // x position of the text
                 
+                // if the word isn't "blank", fillText
                 if (this.words[i] != "blank") {
-                    // if the word isn't "blank", fillText
                     ctx2.fillText(this.words[i], textX, textY);
                 }
                 
             }
             
-        } else if ( this.numberOfWords === 2 ){
-            
-            let textY = this.y - this.fontSize/4;
+        } else if ( this.numberOfWords === 2 ){ // text placement of the ball if it has 2 words
+            let textY = this.y - this.fontSize/4; // y position of the text
             for (let i = 0; i < this.words.length; i++) {
                 let textX = this.x - 2 - this.wordWidths[i]/2;
                 ctx2.fillText(this.words[i], textX, textY);
@@ -279,15 +299,18 @@ function Stack(x, y, velocity, mass, radius, type, ballFill, ballStroke, fontCol
     // function to update the new position of the snow ball in according to the velocities
     this.update =  function(stackArray) {
         
-        this.draw();
         // console.log(stackArray[2]);
         for (let i = 0; i < stackArray.length; i++) {
-            if (this === stackArray[i]) continue;
+            //prevent this ball from checking if it's touching itself
+            if (this === stackArray[i]) continue; 
+            // check if two balls have touched
             if ( distanceBetween(this.x, stackArray[i].x, this.y, stackArray[i].y) < radius + stackArray[i].radius ) {
                 // console.log("has collided");
                 
+                // generate new velocity direction, due to elastic collison
                 resolveCollision(this, stackArray[i]);
 
+                //if two balls collide and they're not of the same type, swap their types
                 if (this.type !== stackArray[i].type) {
                     if (this.type == 'fill') {
                         this.type = 'stroke';
@@ -316,26 +339,29 @@ function Stack(x, y, velocity, mass, radius, type, ballFill, ballStroke, fontCol
         // incresing x coordinate by the speed in the x direction, dx
         this.x += this.velocity.x; 
         // incresing y coordinate by the speed in the y direction, dy
-        this.y += this.velocity.y ;
-        // this.draw();
+        this.y += this.velocity.y;
 
-        
+        // draw the ball in its new position
+        this.draw();
+
     }
 }
 
 
 // animate canvas function
 function animateStack() {
-    requestAnimationFrame(animateStack);
+    requestAnimationFrame(animateStack); //run animateStack function till infinity
+    // clear canvas to give illusion of movement
     ctx2.clearRect(0, 0, scw, sch);
     
     // console.log(stackArray);
+    // update each of the object in the stack array
     stackArray.forEach(stack => {
         stack.update(stackArray);
     });
 }
 
-
+// wait foir 5 seconds after load before animating the canvas
 window.onload = setTimeout(() => {
     initStack();
     animateStack();

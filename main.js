@@ -168,6 +168,7 @@ function changeTheme() {
         sunEmoji.style.display = "inline ";
         // display sun emoji for dark theme, and make moon emoji invisible
 
+        // switch themecolors for stackarray balls, other related code is in stackcanvas.js
         for (let j = 0; j < stackArray.length; j++) {
 
             stackArray[j].fontColor = colorArray[0];
@@ -247,6 +248,7 @@ function changeTheme() {
         sunEmoji.style.display = "none";
         // display moon emoji for light theme, and make sun emoji invisible
 
+        // switch themecolors for stackarray balls, other related code is in stackcanvas.js
         for (let j = 0; j < stackArray.length; j++) {
             
             stackArray[j].fontColor = colorArray[6];
