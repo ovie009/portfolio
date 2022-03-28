@@ -38,6 +38,11 @@ let  myStack = [
     "PhpMyAdmin"
 ]
 
+// adding 50 blank balls to stack array
+for (let i = 0; i < 50; i++) {
+    myStack.push("blank");
+}
+
 let colorArray = [
     "#2C2C2C",
     "#262626",
@@ -136,14 +141,23 @@ function initStack() {
         let numberOfWords = words.length;
         let wordWidths=[];
         for(let i=0;i<words.length;i++){ wordWidths.push(ctx2.measureText(words[i]).width); }
-
-        let radius = randomFloat(32, 42);
-        // if word width is creater than diameter of the ball, let radiusbe equall to 10px plus word width
-        wordWidths.forEach(width => {
-            if (width > (2*radius - 5)) {
-                radius = width/2 + 15;
-            }
-        });
+        let radius;
+        if (text == "PhpMyAdmin") {
+            // large cirlce 
+            radius = 42;
+        } else if (text == "blank"){ 
+            // small circle
+            radius = randomInteger(2, 8);
+        }else{
+            radius = randomFloat(32, 42);
+            // if word width is creater than diameter of the ball, let radius be equall to 10px plus word width
+            wordWidths.forEach(width => {
+                if (width > (2*radius - 5)) {
+                    radius = width/2 + 15;
+                }
+            });
+            
+        }
         // generating random values for each of the properties of the snow ball
         let x = randomInteger(radius, scw - radius);
         let y = randomInteger(radius, sch - radius);
@@ -184,6 +198,7 @@ function initStack() {
                 }
             }
         }
+
         stackArray.push(new Stack(x, y, velocity, mass, radius, type, ballFill, ballStroke, fontColor, fontSize, fontFace, numberOfWords, words, wordWidths));
     }
 }
@@ -241,8 +256,11 @@ function Stack(x, y, velocity, mass, radius, type, ballFill, ballStroke, fontCol
             for (let i = 0; i < this.words.length; i++) {
                 let textY = this.y + this.fontSize/4;
                 let textX = this.x - 2 - this.wordWidths[i]/2;
-
-                ctx2.fillText(this.words[i], textX, textY);
+                
+                if (this.words[i] != "blank") {
+                    // if the word isn't "blank", fillText
+                    ctx2.fillText(this.words[i], textX, textY);
+                }
                 
             }
             
