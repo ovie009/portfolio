@@ -106,7 +106,9 @@ function changeTheme() {
             dropDownIcon.src = "icons/light-close.svg";
         }
         // also reverse the themeColors in the CSS themeColors variables
-        setThemeValue(themeColors.reverse());
+        setThemeValue(themeColors.reverse(),  'themeColor');
+        setThemeValue(inputColors.reverse(),  'inputColor');
+        
         // set new cookie value afterwards
         setCookie("themeColor", "dark", 365);
 
@@ -124,30 +126,10 @@ function changeTheme() {
         whatsapp.src = "icons/light-whatsapp.svg";
         instagram.src = "icons/light-instagram.svg";
         
-        // currentTheme = getCookie("themeColor");
-        var r = document.querySelector(":root");
-        var rs = getComputedStyle(r);
-    
-        // inputBackgroundColor = rs.getPropertyValue(`--${currentTheme}Input`);
-        inputBackgroundColor = rs.getPropertyValue(`--darkInput`);
-    
-        // select input fields
-        let inputName = document.querySelector("#input-name");
-        let inputEmail = document.querySelector("#input-email");
-        let inputSubject = document.querySelector("#input-subject");
-        let inputMessage = document.querySelector("#input-message");
-
         // select card and card wrapper
         let card = document.getElementsByClassName("card");
         let cardTextWrapper = document.getElementsByClassName("card-text-wrapper");
         let cardStyling = document.getElementsByClassName("card-styling");
-
-        // set inout background colors
-        inputName.style.backgroundColor = inputBackgroundColor;
-        inputEmail.style.backgroundColor = inputBackgroundColor;
-        inputSubject.style.backgroundColor = inputBackgroundColor;
-        inputMessage.style.backgroundColor = inputBackgroundColor;
-
 
         //  set card background colors
         // console.log(typeof card)
@@ -188,7 +170,9 @@ function changeTheme() {
             dropDownIcon.src = "icons/dark-close.svg";
         }
         // also reverse the themeColors in the CSS themeColors variables
-        setThemeValue(themeColors.reverse());
+        setThemeValue(themeColors.reverse(),  'themeColor');
+        setThemeValue(inputColors.reverse(),  'inputColor');
+       
         // set new cookie value afterwards
         setCookie("themeColor", "light", 365);
         
@@ -206,29 +190,11 @@ function changeTheme() {
         whatsapp.src = "icons/dark-whatsapp.svg";
         instagram.src = "icons/dark-instagram.svg";
         
-        currentTheme = getCookie("themeColor");
-        var r = document.querySelector(":root");
-        var rs = getComputedStyle(r);
-    
-        inputBackgroundColor = rs.getPropertyValue(`--lightInput`);
-    
-        // select input fields
-        let inputName = document.querySelector("#input-name");
-        let inputEmail = document.querySelector("#input-email");
-        let inputSubject = document.querySelector("#input-subject");
-        let inputMessage = document.querySelector("#input-message");
-
         // select card and card wrapper
         let card = document.getElementsByClassName("card");
         let cardTextWrapper = document.getElementsByClassName("card-text-wrapper");
         let cardStyling = document.getElementsByClassName("card-styling");
 
-        // set inout background colors
-        inputName.style.backgroundColor = inputBackgroundColor;
-        inputEmail.style.backgroundColor = inputBackgroundColor;
-        inputSubject.style.backgroundColor = inputBackgroundColor;
-        inputMessage.style.backgroundColor = inputBackgroundColor;
-        
         //  set card background colors
         // console.log(typeof card)
         // console.log(card)

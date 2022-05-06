@@ -358,6 +358,7 @@ function animateStack() {
     // update each of the object in the stack array
     stackArray.forEach(stack => {
         stack.update(stackArray);
+        console.log('stack animating');
     });
 }
 
