@@ -39,9 +39,9 @@ body{
 /* parent div of the animating balls in the preloader */
 .ball-wrapper{
     display: flex;
-    gap: 0.2px;
+    gap: 1px;
     width: 100%;
-    height: 200px;
+    height: 500px;
     justify-content: center;
     align-items: center;
 }
@@ -54,7 +54,7 @@ body{
 .ball{ /*general css of all the balls*/
     width: calc(100vw / 28);
     height: calc(100vw / 28);
-    border: 2px solid var(--themeColor1);
+    border: calc(50VW / 125) solid var(--themeColor1);
     border-radius: 50%;
     position: relative;
     box-sizing: border-box;
@@ -72,35 +72,20 @@ body{
     animation-timing-function: linear;
 }
 
-/* styling exclusive to the "v" and "i" of the preloader*/
-.ball:nth-child(2), .ball:nth-child(3){
-    margin-top: 7.5px;
+.iv{
+    width: calc(100vw / 20);
+    height: calc(100vw / 20);
+    /* overflow: hidden; */
+    z-index: 1;
+    border: none;
+    /* background-color: red; */
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
 }
 
-/* stylig specific to the v, in order to get the desired "v" shape */
-.ball:nth-child(2){
-    width: 0;
-    height: 0;
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-    border-radius: 0;
-    border-top-width: calc(100vw / 30);
-    border-right-width: calc(100vw / 50);
-    border-left-width: calc(100vw / 50);
-    border-bottom-width: 0;
-    border-color: var(--themeColor1) transparent transparent transparent;
-    border-style: solid;
-}
-
-/* stylig specific to the "i", in order to get the desired "i" shape */
-.ball:nth-child(3){
-    margin-right: 2.5px;
-    width: 2.5px;
-    box-sizing: border-box;
-    padding: 0;
-    background-color: var(--themeColor1); 
-    border-left: none;
-    border-radius: 1px;
+.iv img{
+    width: 100%;
 }
 
 /* styling last ball */
@@ -168,6 +153,7 @@ body{
     100% {bottom: 0; right: 0;} /*angle of rotation 0deg*/
 
 }
+
 
 /* animation corresponding to the last ball */
 @keyframes rightBall {
@@ -723,5 +709,103 @@ footer{
 #footer-text{
     font-size: .7em;
     color: var(--themeColor2);
+}
+
+
+
+/* MEDIA QUERY *//* MEDIA QUERY */
+/* MEDIA QUERY *//* MEDIA QUERY */
+/* MEDIA QUERY *//* MEDIA QUERY */
+/* MEDIA QUERY *//* MEDIA QUERY */
+/* MEDIA QUERY *//* MEDIA QUERY */
+/* MEDIA QUERY *//* MEDIA QUERY */
+
+/* preloader media query */
+@media only screen and (min-width: 700px)  {
+    /* styling first ball */
+    .ball:first-child, .ball:last-child{
+        animation-duration: 1.25s;
+    }
+
+    /* animation corresponding to the first ball */
+    /* where the radius of rotation is 200px */
+    @keyframes leftBall {
+        0% {bottom: 0; right: 0;} /*angle of rotation 0deg*/
+        2% {bottom: 0.8px; right: 17.4px; background-color: var(--themeColor1);} /*angle of rotation 5deg*/
+        4% {bottom: 3px; right: 34.7px; background-color: var(--themeColor1);} /*angle of rotation 10deg*/
+        8.75% {bottom: 6.8px; right: 51.8px; background-color: var(--themeColor1);} /*angle of rotation 15deg*/
+        15% {bottom: 12px; right: 68.4px; background-color: var(--themeColor1);} /*angle of rotation 20deg*/
+        22.5% {bottom: 26.8px; right: 100px;} /*angle of rotation 30deg*/
+        27.5% {bottom: 26.8px; right: 100px;} /*angle of rotation 30deg*/
+        35% {bottom: 12px; right: 68.4px;} /*angle of rotation 20deg*/
+        41.25% {bottom: 6.8px; right: 51.8px;} /*angle of rotation 15deg*/
+        45% {bottom: 3px; right: 34.7px;} /*angle of rotation 10deg*/
+        47% {bottom: 0.8px; right: 17.4px;} /*angle of rotation 5deg*/
+        50% {bottom: 0; right: 0;} /*angle of rotation 0deg*/
+        100% {bottom: 0; right: 0;} /*angle of rotation 0deg*/
+    }
+
+    
+    /* animation corresponding to the last ball */
+    @keyframes rightBall {
+        0% {bottom: 0; left: 0;}
+        50% {bottom: 0; left: 0;}
+        53% {bottom: 0.8px; left: 17.4px;}
+        55% {bottom: 3px; left: 34.8px;}
+        58.75% {bottom: 6.8px; left: 51.8px;}
+        65% {bottom: 12px; left: 68.4px;}
+        72.5% {bottom: 26.8px; left: 100px;}
+        77.5% {bottom: 26.8px; left: 100px;}
+        85% {bottom: 12px; left: 68.4px;}
+        91.25% {bottom: 6.8px; left: 51.8px;}
+        95% {bottom: 3px; left: 34.8px;}
+        98% {bottom: 0.8px; left: 17.4px;}
+        100% {bottom: 0; left: 0;}
+
+    }
+}
+
+@media only screen and (min-width: 1500px)  {
+    /* styling first ball */
+    .ball:first-child, .ball:last-child{
+        animation-duration: 1.25s;
+    }
+
+    /* animation corresponding to the first ball */
+    /* where the radius of rotation is 400px */
+    @keyframes leftBall {
+        0% {bottom: 0; right: 0;} /*angle of rotation 0deg*/
+        2% {bottom: 1.6px; right: 34.8px; background-color: var(--themeColor1);} /*angle of rotation 5deg*/
+        4% {bottom: 6px; right: 69.4px; background-color: var(--themeColor1);} /*angle of rotation 10deg*/
+        8.75% {bottom: 13.6px; right: 103.6px; background-color: var(--themeColor1);} /*angle of rotation 15deg*/
+        15% {bottom: 24px; right: 136.8px; background-color: var(--themeColor1);} /*angle of rotation 20deg*/
+        22.5% {bottom: 53.6px; right: 200px;} /*angle of rotation 30deg*/
+        27.5% {bottom: 53.6px; right: 200px;} /*angle of rotation 30deg*/
+        35% {bottom: 24px; right: 136.8px;} /*angle of rotation 20deg*/
+        41.25% {bottom: 13.6px; right: 103.6px;} /*angle of rotation 15deg*/
+        45% {bottom: 6px; right: 69.4px;} /*angle of rotation 10deg*/
+        47% {bottom: 1.6px; right: 34.8px;} /*angle of rotation 5deg*/
+        50% {bottom: 0; right: 0;} /*angle of rotation 0deg*/
+        100% {bottom: 0; right: 0;} /*angle of rotation 0deg*/
+    }
+
+    
+    /* animation corresponding to the last ball */
+    @keyframes rightBall {
+        0% {bottom: 0; left: 0;}
+        50% {bottom: 0; left: 0;}
+        53% {bottom: 1.6px; left: 34.8px;}
+        55% {bottom: 6px; left: 69.4px;}
+        58.75% {bottom: 13.6px; left: 103.6px;}
+        65% {bottom: 24px; left: 136.8px;}
+        72.5% {bottom: 53.6px; left: 200px;}
+        77.5% {bottom: 53.6px; left: 200px;}
+        85% {bottom: 24px; left: 136.8px;}
+        91.25% {bottom: 13.6px; left: 103.6px;}
+        95% {bottom: 6px; left: 69.4px;}
+        98% {bottom: 1.6px; left: 34.8px;}
+        100% {bottom: 0; left: 0;}
+
+    }
 }
 
