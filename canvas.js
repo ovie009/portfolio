@@ -11,12 +11,22 @@ let cw = mainCanvas.width;
 let ch = mainCanvas.height;
 
 // array to store all the snow ball object
-let snowArray = [];
+let snowArray;
 
 // function that initializes the snow object 
 function init() {
     // variable to control number of snowballs
-    let numberOfSnowBalls = 125;
+    snowArray = [];
+    mainCanvas.width = window.innerWidth;
+    mainCanvas.height = window.innerHeight;
+    // width of the main canvas
+    cw = mainCanvas.width;
+    // height of the main canvas
+    ch = mainCanvas.height;
+    let numberOfSnowBalls = 200;
+    if (cw >= 820) {
+        numberOfSnowBalls = 325;
+    }
     for (let i = 0; i < numberOfSnowBalls; i++) {
         // generating random values for each of the propertirs of the snow ball
         let radius = randomInteger(1, 3);
@@ -29,6 +39,31 @@ function init() {
         snowArray.push(new Snow(x, y, dx, dy, radius, color));
     }
 
+}
+
+// varaible top store mouse position //
+let mousePosition = {
+    x: 0,
+    y: 0
+}
+
+// mousemove event listenner
+document.addEventListener('mousemove', function (e) {
+    mousePosition.x = e.clientX;
+    mousePosition.y = e.clientY;
+
+    // console.log(mousePosition);
+});
+
+// onscreen resize restart canvas animation
+window.onresize = function () {
+    init();
+    mainCanvas.width = window.innerWidth;
+    mainCanvas.height = window.innerHeight;
+    // width of the main canvas
+    cw = mainCanvas.width;
+    // height of the main canvas
+    ch = mainCanvas.height;
 }
 
 // console.log(snowArray)
@@ -69,6 +104,11 @@ function Snow(x, y, dx, dy, radius, color) {
         // checking if the snowball is still within the screen height
         if (this.y + this.radius > ch || this.y < radius) {
             this.dy *= -1;
+        }
+
+        // coditions to increase radius of balls close to mouse
+        if ( distanceBetween() ) {
+            
         }
         
         // incresing x coordinate by the speed in the x direction, dx

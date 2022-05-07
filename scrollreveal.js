@@ -35,7 +35,7 @@ ScrollReveal().reveal(".contact-paragraph", { delay: 1000, origin: "bottom", res
 ScrollReveal().reveal("#input-name", { delay: 1100, origin: "bottom", reset: false});
 ScrollReveal().reveal("#input-email", { delay: 1200, origin: "bottom", reset: false});
 ScrollReveal().reveal("#input-subject", { delay: 1300, origin: "bottom", reset: false});
-ScrollReveal().reveal("#input-message", { delay: 1400, origin: "bottom", reset: false});
+ScrollReveal().reveal("#input-message", { delay: 2000, origin: "right", reset: false});
 ScrollReveal().reveal("#contact-submit", { delay: 1500, origin: "bottom", reset: false});
 
 

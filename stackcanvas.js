@@ -2,18 +2,53 @@ let stackCanvas = document.querySelector("#stack-canvas");
 // get 2d context
 let ctx2 = stackCanvas.getContext("2d");
 // set canvas width and height
-// console.log({stackCanvas})
+
+let sizeGuide = document.querySelector("#canvas-size-guide");
 
 // set width and height of the canvas
-stackCanvas.width = window.innerWidth; 
-stackCanvas.height = window.innerHeight - 200;
+stackCanvas.width = window.innerWidth - 5; 
+stackCanvas.height = window.innerHeight - 220;
 
+if (window.innerWidth >= 1000) {
+    stackCanvas.width = sizeGuide.clientWidth + 20; 
+    stackCanvas.height = sizeGuide.clientHeight + 25;
+}
+
+// get cookie
 let lastCookie = getCookie("themeColor");
 
 // width of the stack canvas
 let scw = stackCanvas.width;
 // height of the stack canvas
 let sch = stackCanvas.height;
+
+// console.log(scw)
+// console.log(sch)
+console.log({sizeGuide})
+// console.log( sizeGuide.offsetParent.offsetTop )
+
+let animationTrigger = false; 
+let animationTriggerHeight = sizeGuide.offsetParent.offsetTop - sizeGuide.offsetParent.clientHeight;
+
+
+window.onscroll = function(){
+    // console.log(window);
+    // console.log('scroll Position: '+window.scrollY);
+    // console.log('element Position: '+animationTriggerHeight);
+    if (window.scrollY > animationTriggerHeight ) {
+        console.log('Initializing animation')
+        // animationTrigger = true;
+        startAnimation();
+    }
+}
+
+function startAnimation() {
+    if (animationTrigger == false) {
+        initStack();
+        animateStack();
+        animationTrigger = true;
+    }
+}
 
 // console.log(scw);
 // console.log(sch);
@@ -40,7 +75,7 @@ let  myStack = [
 ]
 
 // adding 50 blank balls to stack array
-for (let i = 0; i < 50; i++) {
+for (let i = 0; i < 40; i++) {
     myStack.push("blank");
 }
 
@@ -133,28 +168,52 @@ let stackArray = [];
 
 // function that initializes the stack object 
 function initStack() {
+    // stackArray = [];
+
+    let fontSize = 10; // set font size
+    let minBall = 32;
+    let maxBall = 42;
+    let minBlank = 2;
+    let maxBlank = 8;
+    let responsiveFactor = 1; // variable to increase font size for bigger screens
+
+    if (scw >= 820) {
+
+        responsiveFactor = 1.5;
+
+        fontSize = fontSize * responsiveFactor; // set font size
+        minBall = minBall * responsiveFactor;
+        maxBall = maxBall * responsiveFactor;
+
+        minBlank = minBlank * responsiveFactor;
+        maxBlank = maxBlank * responsiveFactor;
+
+
+    }
     // variable to select number of stackballs = number of elements in myStack array
     let numberOfStackBalls = myStack.length;
     for (let i = 0; i < numberOfStackBalls; i++) {
         let text = myStack[i]; //select stack text
-        let fontSize = 10; // set font size
         let fontFace='poppins'; // set font family
         // let lineHeight=parseInt(fontSize*1.286); // get line height
         let words = text.split('_'); // split two words text where '_' appears and store the resulting array in words variable
         let numberOfWords = words.length; // get the number of words in words array
         let wordWidths=[]; // array to store the width of each word in the words array
-        for(let i=0;i<words.length;i++){ wordWidths.push(ctx2.measureText(words[i]).width); } // store word width in wordWidths array
+        for(let i=0;i<words.length;i++){ wordWidths.push(ctx2.measureText(words[i]).width * responsiveFactor); } // store word width in wordWidths array
         let radius; // declare radius variable, which determines the radius of the balls
         // setting the radius of the ball around "PhpMyAdmin" manually 
         //because the code to auto generate the radius wasnt making the ball big enough
         if (text == "PhpMyAdmin") {
             // large cirlce 
             radius = 42;
+            if (scw >= 820) {
+                radius = 84;
+            }
         } else if (text == "blank"){ // if text is "blank" generate radius of smaller sizes
             // small circle
-            radius = randomInteger(2, 8);
+            radius = randomInteger(minBlank, maxBlank);
         }else{ // else auto generate the radius for everything else
-            radius = randomFloat(32, 42); // first of all, auto generate a non integer radius between 32 and 42
+            radius = randomFloat(minBall, maxBall); // first of all, auto generate a non integer radius between 3minBlank maxBlank 42
             wordWidths.forEach(width => {
                 // if wordWidths is creater than diameter of the ball, increase the radius by 15px more than the wordWidth
                 if (width > (2*radius - 5)) {
@@ -347,7 +406,6 @@ function Stack(x, y, velocity, mass, radius, type, ballFill, ballStroke, fontCol
     }
 }
 
-
 // animate canvas function
 function animateStack() {
     requestAnimationFrame(animateStack); //run animateStack function till infinity
@@ -358,13 +416,6 @@ function animateStack() {
     // update each of the object in the stack array
     stackArray.forEach(stack => {
         stack.update(stackArray);
-        console.log('stack animating');
+        // console.log('stack animating');
     });
 }
-
-// wait foir 5 seconds after load before animating the canvas
-window.onload = setTimeout(() => {
-    initStack();
-    animateStack();
-}, 5000);
-

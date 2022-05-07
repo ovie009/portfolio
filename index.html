@@ -178,13 +178,18 @@
                     <img id="change-theme" src="icons/dark-mode.svg" alt="dark mode icon">
                 </button>
                 <!-- dropdown(right) button -->
-                <button class="drop-right" onclick="dropRight()">
+                <button id="drop-right-panel" class="drop-right" onclick="dropRight()">
                     <img id="drop-right" src="icons/dark-list-icon.svg" alt="drop down icon">
                 </button>
                 <!-- nav links, to be displayed only in desktop view
                     while the buttons would not be displayed
                 -->
                 <ul class="nav-links">
+                    <li class="nav-item work-link"><a href="#">Work</a></li>
+                    <li class="nav-item about-link"><a href="#">About Me</a></li>
+                    <li class="nav-item services-link"><a href="#">Services</a></li>
+                    <li class="nav-item tutorials-link"><a href="#">Tutorials</a></li>
+                    <li class="nav-item contacts-link"><a href="#">Contacts</a></li>
                 </ul>
             </div>
         </nav>
@@ -252,110 +257,118 @@
     </main>
     <section id="skills-section">
         <h2 class="skills-heading"> What I do? <strong>My Services</strong></h2>
-        <!-- embedded system card -->
-        <a class="card" href="#">
-            <div class="card-image-wrapper">
-                <!-- <span>image</span> -->
-                <img class="card-image" src="images/embedded_systems_image.jpg" alt="Embedded Systems Part">
-                <img src="icons/light-card-base.svg" alt="" class="card-styling">
-            </div>
-            <div class="card-text-wrapper">
-                <h3 class="card-title">Arduino Projects</h3>
-                <p class="card-text">Prototyping, building and coding Arduino-based projects</p>
-            </div>
-        </a>
-        <!-- Circuit Design card -->
-        <a class="card" href="#">
-            <div class="card-image-wrapper">
-                <img class="card-image" src="images/fritzing_image.jpg" alt="Fritzing Circuit Design" id="circuit-image">
-                <img src="icons/light-card-base.svg" alt="" class="card-styling">
-            </div>
-            <div class="card-text-wrapper">
-                <h3 class="card-title">Circuit Designs</h3>
-                <p class="card-text">Circuit design and prototyping on the Fritzing app</p>
-            </div>
-        </a>
-        <!-- UI/UX Design -->
-        <a class="card" href="#">
-            <div class="card-image-wrapper">
-                <img class="card-image" src="images/UI_UX_image.jpg" alt="UI/UX Design">
-                <img src="icons/light-card-base.svg" alt="" class="card-styling">
-            </div>
-            <div class="card-text-wrapper">
-                <h3 class="card-title">UI/UX Design</h3>
-                <p class="card-text">User interface and user experience design on the Figma app</p>
-            </div>
-        </a>
-        <!-- Frontend Web Development -->
-        <a class="card" href="#">
-            <div class="card-image-wrapper">
-                <img class="card-image" src="images/frontend_image.jpg" alt="HTML and CSS">
-                <img src="icons/light-card-base.svg" alt="" class="card-styling">
-            </div>
-            <div class="card-text-wrapper">
-                <h3 class="card-title">Frontend Web Development</h3>
-                <p class="card-text">Programming the part of websites users can see and interact with using web langauges like HTML, CSS and Javascript</p>
-            </div>
-        </a>
-        <!-- Backend Web Development -->
-        <a class="card" href="#">
-            <div class="card-image-wrapper">
-                <img class="card-image" src="images/backend_image.jpg" alt="PHP Code">
-                <img src="icons/light-card-base.svg" alt="" class="card-styling">
-            </div>
-            <div class="card-text-wrapper">
-                <h3 class="card-title">Backend Web Development</h3>
-                <p class="card-text">
-                    Programming the server side of a website with languages like PHP, MySQl, AJAX etc.
+        <div class="card-wrapper">
+            <!-- embedded system card -->
+            <a class="card" href="#">
+                <div class="card-image-wrapper">
+                    <!-- <span>image</span> -->
+                    <img class="card-image" src="images/embedded_systems_image.jpg" alt="Embedded Systems Part">
+                    <img src="icons/light-card-base.svg" alt="" class="card-styling">
+                </div>
+                <div class="card-text-wrapper">
+                    <h3 class="card-title">Arduino Projects</h3>
+                    <p class="card-text">Prototyping, building and coding Arduino-based projects</p>
+                </div>
+            </a>
+            <!-- Circuit Design card -->
+            <a class="card" href="#">
+                <div class="card-image-wrapper">
+                    <img class="card-image" src="images/fritzing_image.jpg" alt="Fritzing Circuit Design" id="circuit-image">
+                    <img src="icons/light-card-base.svg" alt="" class="card-styling">
+                </div>
+                <div class="card-text-wrapper">
+                    <h3 class="card-title">Circuit Designs</h3>
+                    <p class="card-text">Circuit design and prototyping on the Fritzing app</p>
+                </div>
+            </a>
+            <!-- UI/UX Design -->
+            <a class="card" href="#">
+                <div class="card-image-wrapper">
+                    <img class="card-image" src="images/UI_UX_image.jpg" alt="UI/UX Design">
+                    <img src="icons/light-card-base.svg" alt="" class="card-styling">
+                </div>
+                <div class="card-text-wrapper">
+                    <h3 class="card-title">UI/UX Design</h3>
+                    <p class="card-text">User interface and user experience design on the Figma app</p>
+                </div>
+            </a>
+            <!-- Frontend Web Development -->
+            <a class="card" href="#">
+                <div class="card-image-wrapper">
+                    <img class="card-image" src="images/frontend_image.jpg" alt="HTML and CSS">
+                    <img src="icons/light-card-base.svg" alt="" class="card-styling">
+                </div>
+                <div class="card-text-wrapper">
+                    <h3 class="card-title">Frontend Web Development</h3>
+                    <p class="card-text">Programming of client side using langauges like HTML, CSS and Javascript</p>
+                </div>
+            </a>
+            <!-- Backend Web Development -->
+            <a class="card" href="#">
+                <div class="card-image-wrapper">
+                    <img class="card-image" src="images/backend_image.jpg" alt="PHP Code">
+                    <img src="icons/light-card-base.svg" alt="" class="card-styling">
+                </div>
+                <div class="card-text-wrapper">
+                    <h3 class="card-title">Backend Web Development</h3>
+                    <p class="card-text">
+                        Programming the server side of a website with languages like PHP, MySQl, AJAX etc.
+                    </p>
+                </div>
+            </a>
+            <!-- CSS Battle -->
+            <a class="card" href="#">
+                <div class="card-image-wrapper">
+                    <img id="css-battle" class="card-image" src="images/css_battle_image.jpg" alt="CSS Battle">
+                    <img src="icons/light-card-base.svg" alt="" class="card-styling">
+                </div>
+                <div class="card-text-wrapper">
+                    <h3 class="card-title">Something Fun</h3>
+                    <p class="card-text">Challenge me to a CSSBattle <span class="card-emoji" id="moon-emoji">&#127770</span> <span class="card-emoji" id="sun-emoji">&#127773</span> </p>
+                </div>
+            </a>
+        </div>
+    </section>
+    <div class="stack-contact-wrapper">
+        <section id="contact-section">
+            <h2 class="contact-heading">
+                <!-- Contact me -->
+                <span class="contact-1">C</span>
+                <span class="contact-2">o</span>
+                <span class="contact-3">n</span>
+                <span class="contact-4">t</span>
+                <span class="contact-5">a</span>
+                <span class="contact-6">c</span>
+                <span class="contact-7">t</span>
+                &nbsp;
+                <span class="contact-8">m</span>
+                <span class="contact-9">e</span>
+            </h2>
+            <hr class="contact-rule">
+            <div>
+                <p class="contact-paragraph">
+                    I'm interested in web development and embedded systems projects. However if you have other request or questions, dont hesitate to use the form.
                 </p>
+                <form action="#" id="contact-form">
+                    <input type="text" name="name" id="input-name" class="input-fields" placeholder="name">
+                    <input type="email" name="email" id="input-email" class="input-fields" placeholder="email">
+                    <textarea name="subject" id="input-subject" cols="40" rows="10" class="input-fields" placeholder="Subject"></textarea>
+                    <textarea name="message" id="input-message" cols="40" rows="10" class="input-fields" placeholder="Message"></textarea>
+                    <button type="button" name="contactMe" id="contact-submit">submit</button>
+                </form>
             </div>
-        </a>
-        <!-- CSS Battle -->
-        <a class="card" href="#">
-            <div class="card-image-wrapper">
-                <img id="css-battle" class="card-image" src="images/css_battle_image.jpg" alt="CSS Battle">
-                <img src="icons/light-card-base.svg" alt="" class="card-styling">
+        </section>
+        <section id="stack-section">
+            <div class="stack-column">
+                <h2 class="stack-heading">My Stack, &nbsp;<em>I'm familiar with the following technologies</em> </h2>
+                <div id="canvas-size-guide">
+
+                    <canvas id="stack-canvas"></canvas>
+                </div>
             </div>
-            <div class="card-text-wrapper">
-                <h3 class="card-title">Something Fun</h3>
-                <p class="card-text">Challenge me to a CSSBattle <span class="card-emoji" id="moon-emoji">&#127770</span> <span class="card-emoji" id="sun-emoji">&#127773</span> </p>
-            </div>
-        </a>
-    </section>
-    <section id="stack-section">
-        <div class="stack-column">
-            <h2 class="stack-heading">My Stack, &nbsp;<em>I'm familiar with the following technologies</em> </h2>
-            <canvas id="stack-canvas"></canvas>
-        </div>
-    </section>
-    <section id="contact-section">
-        <h2 class="contact-heading">
-            <!-- Contact me -->
-            <span class="contact-1">C</span>
-            <span class="contact-2">o</span>
-            <span class="contact-3">n</span>
-            <span class="contact-4">t</span>
-            <span class="contact-5">a</span>
-            <span class="contact-6">c</span>
-            <span class="contact-7">t</span>
-            &nbsp;
-            <span class="contact-8">m</span>
-            <span class="contact-9">e</span>
-        </h2>
-        <hr class="contact-rule">
-        <div>
-            <p class="contact-paragraph">
-                I'm interested in web development and embedded systems projects. However if you have other request or questions, dont hesitate to use the form.
-            </p>
-            <form action="#" id="contact-form">
-                <input type="text" name="name" id="input-name" class="input-fields" placeholder="name">
-                <input type="email" name="email" id="input-email" class="input-fields" placeholder="email">
-                <input type="text" name="subject" id="input-subject" class="input-fields" placeholder="subject">
-                <textarea name="message" id="input-message" cols="40" rows="10" class="input-fields" placeholder="Message"></textarea>
-                <button type="button" name="contactMe" id="contact-submit">submit</button>
-            </form>
-        </div>
-    </section>
+        </section>
+        
+    </div>
     <footer>
         <div class="footer-wrapper">
             <ul class="footer-icons">
@@ -457,5 +470,7 @@
     <script src="canvas.js" type="text/JavaScript"></script>
     <!-- load stack canvas javascript file -->
     <script src="stackcanvas.js" type="text/JavaScript"></script>
+    <!-- load javascript file to animate cursor -->
+    <script src="cursorAnimation.js"></script>
 </body>
 </html>
