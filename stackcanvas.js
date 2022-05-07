@@ -24,7 +24,7 @@ let sch = stackCanvas.height;
 
 // console.log(scw)
 // console.log(sch)
-console.log({sizeGuide})
+// console.log({sizeGuide})
 // console.log( sizeGuide.offsetParent.offsetTop )
 
 let animationTrigger = false; 

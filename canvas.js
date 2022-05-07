@@ -25,7 +25,7 @@ function init() {
     ch = mainCanvas.height;
     let numberOfSnowBalls = 200;
     if (cw >= 820) {
-        numberOfSnowBalls = 325;
+        numberOfSnowBalls = 500;
     }
     for (let i = 0; i < numberOfSnowBalls; i++) {
         // generating random values for each of the propertirs of the snow ball
@@ -34,6 +34,13 @@ function init() {
         let y = randomInteger(radius, ch - radius);
         let dx = randomFloat(-0.5, 0.5);
         let dy = randomFloat(-0.5, 0.5);
+        
+        // for larger devices like tablets and laptops, the balls should move faster
+        if (cw >= 820) {
+            dx = randomFloat(-0.8, 0.8);
+            dy = randomFloat(-0.8, 0.8);
+        }
+
         let color = themeColors[randomInteger(1, 3)]; 
         //themecolors variable can be used here because it was declared in the index file
         snowArray.push(new Snow(x, y, dx, dy, radius, color));
@@ -42,15 +49,15 @@ function init() {
 }
 
 // varaible top store mouse position //
-let mousePosition = {
+let mouse = {
     x: 0,
     y: 0
-}
+};
 
 // mousemove event listenner
 document.addEventListener('mousemove', function (e) {
-    mousePosition.x = e.clientX;
-    mousePosition.y = e.clientY;
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
 
     // console.log(mousePosition);
 });
@@ -79,7 +86,11 @@ function Snow(x, y, dx, dy, radius, color) {
     this.opacity = 0; // opacity of the snow balls initially set to 0
     // so it doesnt show immediately the pages loads
     // this increase gradually to give it a fade in effect 
-    this.increment = 0.005; //variable to control the rate of increase of opacity
+    this.increment = 0.005; //variable to control the rate of increase of opacity and snoow balls
+    
+    this.initialRadius = radius; // initial radius of the snow ball
+    this.maximumRadius = 50; // maximum value of radius the balls can increase to
+    this.radiusIncrement = 5; //value to increase radius of balls close to the mouse
 
     // function to draw ths snow ball
     this.draw = function(){
@@ -107,9 +118,45 @@ function Snow(x, y, dx, dy, radius, color) {
         }
 
         // coditions to increase radius of balls close to mouse
-        if ( distanceBetween() ) {
+        let distanceFromMouse =  distanceBetween(mouse.x, this.x, mouse.y, this.y);
+
+        if (distanceFromMouse < 100 ) {
+            // this.radius = 30;
+            // checking if the radius of the ball has increased to the maximum value
+            if (this.radius < this.maximumRadius) {
+                // increase ball radius inversely proportional to distance from mouse
+                this.radius += (this.radiusIncrement / distanceFromMouse);
+            }
             
+        } else {
+
+            // checking iif the radius of the ball has increased to the maximum value
+            if (this.radius > this.initialRadius) {
+                // decrease ball radius at a steady rate
+                this.radius -= this.radiusIncrement * 0.1;
+            } else {
+                
+                this.radius = this.initialRadius;
+
+            }
         }
+
+        // console.log(distanceFromMouse);
+        // if ( distanceFromMouse < 50 ) {
+        //     // checking if the radius of the ball has increased to the maximum value
+        //     if (this.radius <= this.maximumRadius) {
+        //         // increase ball radius inversely proportional to distance from mouse
+        //         this.radius += (this.increment / distanceFromMouse);
+        //     }
+
+        // } else {
+
+        //     // checking iif the radius of the ball has increased to the maximum value
+        //     if (this.radius > this.initialRadius) {
+        //         // decrease ball radius at a steady rate
+        //         this.radius -= this.increment;
+        //     }
+        // }
         
         // incresing x coordinate by the speed in the x direction, dx
         this.x += this.dx; 
@@ -135,6 +182,11 @@ function randomInteger(min, max) {
     return Math.round((Math.random() * (max - min)) + min);
 }
 
+// function to get distance between two points
+function distanceBetween(x1, x2, y1, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+}
+
 // check for mouse move eben
 window.addEventListener('mousemove', 
     function(){
@@ -156,3 +208,5 @@ window.onload = setTimeout(() => {
     init();
     animate();
 }, 1500);
+
+
