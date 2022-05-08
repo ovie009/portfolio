@@ -36,7 +36,7 @@ window.onscroll = function(){
     // console.log('scroll Position: '+window.scrollY);
     // console.log('element Position: '+animationTriggerHeight);
     if (window.scrollY > animationTriggerHeight ) {
-        console.log('Initializing animation')
+        // console.log('Initializing animation');
         // animationTrigger = true;
         startAnimation();
     }
@@ -176,20 +176,26 @@ function initStack() {
     let minBlank = 2;
     let maxBlank = 8;
     let responsiveFactor = 1; // variable to increase font size for bigger screens
-
     if (scw >= 820) {
-
         responsiveFactor = 1.5;
-
-        fontSize = fontSize * responsiveFactor; // set font size
-        minBall = minBall * responsiveFactor;
-        maxBall = maxBall * responsiveFactor;
-
-        minBlank = minBlank * responsiveFactor;
-        maxBlank = maxBlank * responsiveFactor;
-
-
+        // adding 20 blank balls to stack array
+        for (let i = 0; i < 20; i++) {
+            myStack.push("blank");
+        }
+    } else if (scw >= 1000) {
+        responsiveFactor = 1.5;
+        for (let i = 0; i < 40; i++) {
+            myStack.push("blank");
+        }
     }
+
+    fontSize = fontSize * responsiveFactor; // set font size
+    maxBlank = maxBlank * responsiveFactor;
+    minBall = minBall * responsiveFactor;
+    maxBall = maxBall * responsiveFactor;
+
+    minBlank = minBlank * responsiveFactor;
+
     // variable to select number of stackballs = number of elements in myStack array
     let numberOfStackBalls = myStack.length;
     for (let i = 0; i < numberOfStackBalls; i++) {

@@ -40,9 +40,9 @@ ScrollReveal().reveal("#contact-submit", { delay: 1500, origin: "bottom", reset:
 
 
 // footer scroll reveal
-ScrollReveal().reveal("#linkedin-logo", { delay: 500, distance: "100px", origin: "left", reset: false});
-ScrollReveal().reveal("#github-logo", { delay: 500, distance: "100px", origin: "left", reset: false});
-ScrollReveal().reveal("#facebok-logo", { delay: 500, distance: "100px", origin: "top", reset: false});
-ScrollReveal().reveal("#whatsapp-logo", { delay: 500, distance: "100px", origin: "right", reset: false});
-ScrollReveal().reveal("#instagram-logo", { delay: 500, distance: "100px", origin: "right", reset: false});
+// ScrollReveal().reveal("#linkedin-logo", { delay: 500, distance: "100px", origin: "left", reset: false});
+// ScrollReveal().reveal("#github-logo", { delay: 500, distance: "100px", origin: "left", reset: false});
+// ScrollReveal().reveal("#facebok-logo", { delay: 500, distance: "100px", origin: "top", reset: false});
+// ScrollReveal().reveal("#whatsapp-logo", { delay: 500, distance: "100px", origin: "right", reset: false});
+// ScrollReveal().reveal("#instagram-logo", { delay: 500, distance: "100px", origin: "right", reset: false});
 // ScrollReveal().reveal("#footer-text", { delay: 1000, distance: "50px", origin: "bottom", reset: false});

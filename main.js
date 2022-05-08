@@ -116,15 +116,17 @@ function changeTheme() {
         let linkedin = document.querySelector("#linkedin-logo");
         let github = document.querySelector("#github-logo");
         let facebook = document.querySelector("#facebook-logo");
-        let whatsapp = document.querySelector("#whatsapp-logo");
         let instagram = document.querySelector("#instagram-logo");
+        let footerLogo1 = document.querySelector("#footer-logo");
+        let footerLogo2 = document.querySelector(".footer-logo");
 
         // change footer icons
         linkedin.src = "icons/light-linkedin.svg";
         github.src = "icons/light-github.svg";
         facebook.src = "icons/light-facebook.svg";
-        whatsapp.src = "icons/light-whatsapp.svg";
         instagram.src = "icons/light-instagram.svg";
+        footerLogo1.src = "icons/light-logo.svg";
+        footerLogo2.src = "icons/light-logo.svg";
         
         // select card and card wrapper
         let card = document.getElementsByClassName("card");
@@ -180,15 +182,17 @@ function changeTheme() {
         let linkedin = document.querySelector("#linkedin-logo");
         let github = document.querySelector("#github-logo");
         let facebook = document.querySelector("#facebook-logo");
-        let whatsapp = document.querySelector("#whatsapp-logo");
         let instagram = document.querySelector("#instagram-logo");
+        let footerLogo1 = document.querySelector("#footer-logo");
+        let footerLogo2 = document.querySelector(".footer-logo");
 
         // change footer icons
         linkedin.src = "icons/dark-linkedin.svg";
         github.src = "icons/dark-github.svg";
         facebook.src = "icons/dark-facebook.svg";
-        whatsapp.src = "icons/dark-whatsapp.svg";
         instagram.src = "icons/dark-instagram.svg";
+        footerLogo1.src = "icons/dark-logo.svg";
+        footerLogo2.src = "icons/dark-logo.svg";
         
         // select card and card wrapper
         let card = document.getElementsByClassName("card");

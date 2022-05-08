@@ -25,7 +25,7 @@ function init() {
     ch = mainCanvas.height;
     let numberOfSnowBalls = 200;
     if (cw >= 820) {
-        numberOfSnowBalls = 500;
+        numberOfSnowBalls = 450;
     }
     for (let i = 0; i < numberOfSnowBalls; i++) {
         // generating random values for each of the propertirs of the snow ball
@@ -58,7 +58,8 @@ let mouse = {
 document.addEventListener('mousemove', function (e) {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
-
+    // console.log(mouse.y);
+    // console.log(window.scrollY);
     // console.log(mousePosition);
 });
 
@@ -118,18 +119,22 @@ function Snow(x, y, dx, dy, radius, color) {
         }
 
         // coditions to increase radius of balls close to mouse
-        let distanceFromMouse =  distanceBetween(mouse.x, this.x, mouse.y, this.y);
+        let cursorCanvasY = mouse.y + window.scrollY; //this is the actuall Y position on canvas after adjusting for scroll
+        let cursorCanvasX = mouse.x; // this equal to the mouse x position because theres no horizontal scroll on the canvas
+        let distanceFromMouse =  distanceBetween(cursorCanvasX, this.x, cursorCanvasY, this.y);
 
-        if (distanceFromMouse < 100 ) {
+        if (distanceFromMouse < 150 ) {
             // this.radius = 30;
             // checking if the radius of the ball has increased to the maximum value
             if (this.radius < this.maximumRadius) {
                 // increase ball radius inversely proportional to distance from mouse
                 this.radius += (this.radiusIncrement / distanceFromMouse);
             }
+
+            this.opacity = 0.5;
             
         } else {
-
+            
             // checking iif the radius of the ball has increased to the maximum value
             if (this.radius > this.initialRadius) {
                 // decrease ball radius at a steady rate
@@ -137,8 +142,9 @@ function Snow(x, y, dx, dy, radius, color) {
             } else {
                 
                 this.radius = this.initialRadius;
-
+                
             }
+            this.opacity = 1;
         }
 
         // console.log(distanceFromMouse);

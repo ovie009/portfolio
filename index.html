@@ -185,7 +185,6 @@
                     while the buttons would not be displayed
                 -->
                 <ul class="nav-links">
-                    <li class="nav-item work-link"><a href="#">Work</a></li>
                     <li class="nav-item about-link"><a href="#">About Me</a></li>
                     <li class="nav-item services-link"><a href="#">Services</a></li>
                     <li class="nav-item tutorials-link"><a href="#">Tutorials</a></li>
@@ -228,7 +227,6 @@
             <div class="drop-right-div">
                 <h2>Menu</h2>
                 <ul class="dropdown-list">
-                    <li class="list-item-work"><a href="#">Work</a></li>
                     <li class="list-item-about"><a href="#">About Me</a></li>
                     <li class="list-item-services"><a href="#">Services</a></li>
                     <li class="list-item-tutorials"><a href="#">Tutorials</a></li>
@@ -329,58 +327,77 @@
             </a>
         </div>
     </section>
+
     <div class="stack-contact-wrapper">
         <section id="contact-section">
-            <h2 class="contact-heading">
-                <!-- Contact me -->
-                <span class="contact-1">C</span>
-                <span class="contact-2">o</span>
-                <span class="contact-3">n</span>
-                <span class="contact-4">t</span>
-                <span class="contact-5">a</span>
-                <span class="contact-6">c</span>
-                <span class="contact-7">t</span>
-                &nbsp;
-                <span class="contact-8">m</span>
-                <span class="contact-9">e</span>
-            </h2>
-            <hr class="contact-rule">
-            <div>
-                <p class="contact-paragraph">
-                    I'm interested in web development and embedded systems projects. However if you have other request or questions, dont hesitate to use the form.
-                </p>
-                <form action="#" id="contact-form">
-                    <input type="text" name="name" id="input-name" class="input-fields" placeholder="name">
-                    <input type="email" name="email" id="input-email" class="input-fields" placeholder="email">
-                    <textarea name="subject" id="input-subject" cols="40" rows="10" class="input-fields" placeholder="Subject"></textarea>
-                    <textarea name="message" id="input-message" cols="40" rows="10" class="input-fields" placeholder="Message"></textarea>
-                    <button type="button" name="contactMe" id="contact-submit">submit</button>
-                </form>
+            <div id="contact-section-wrapper">
+                <h2 class="contact-heading">
+                    <!-- Contact me -->
+                    <span class="contact-1">C</span>
+                    <span class="contact-2">o</span>
+                    <span class="contact-3">n</span>
+                    <span class="contact-4">t</span>
+                    <span class="contact-5">a</span>
+                    <span class="contact-6">c</span>
+                    <span class="contact-7">t</span>
+                    &nbsp;
+                    <span class="contact-8">m</span>
+                    <span class="contact-9">e</span>
+                </h2>
+                <hr class="contact-rule">
+                <div>
+                    <p class="contact-paragraph">
+                        I am available to work on your projects and bring your ideas to life. I am just a click away.
+                    </p>
+                    <form action="#" id="contact-form">
+                        <input type="text" name="name" id="input-name" class="input-fields" placeholder="name">
+                        <input type="email" name="email" id="input-email" class="input-fields" placeholder="email">
+                        <textarea name="subject" id="input-subject" cols="40" rows="10" class="input-fields" placeholder="Subject"></textarea>
+                        <textarea name="message" id="input-message" cols="40" rows="10" class="input-fields" placeholder="Message"></textarea>
+                        <button type="button" name="contactMe" id="contact-submit">submit</button>
+                    </form>
+                </div>
             </div>
         </section>
         <section id="stack-section">
             <div class="stack-column">
-                <h2 class="stack-heading">My Stack, &nbsp;<em>I'm familiar with the following technologies</em> </h2>
+                <h2 class="stack-heading stack-mobile">My Stack, &nbsp;<em>I'm familiar with the following technologies</em> </h2>
+                <h2 class="stack-heading stack-desktop"> &nbsp; </h2>
                 <div id="canvas-size-guide">
-
                     <canvas id="stack-canvas"></canvas>
                 </div>
             </div>
         </section>
-        
     </div>
+    
     <footer>
+        <img class="footer-logo" src="/icons/dark-logo.svg" alt="ovie logo">
         <div class="footer-wrapper">
-            <ul class="footer-icons">
-                <li><a href="https://www.linkedin.com/in/ovie-iffie-b9b2291b1"><img id="linkedin-logo" src="icons/dark-linkedin.svg" alt="linkedIn"></a></li>
-                <li><a href="https://github.com/ovie009"><img id="github-logo" src="icons/dark-github.svg" alt="github"></a></li>
-                <li><a href="https://www.facebook.com/iffie.ovie"><img id="facebook-logo" src="icons/dark-facebook.svg" alt="facebook"></a></li>
-                <li><a href="https://wa.me/2348165266847"><img id="whatsapp-logo" src="icons/dark-whatsapp.svg" alt="whatsapp"></a></li>
-                <li><a href="https://instagram.com/iffieovie"><img id="instagram-logo" src="icons/dark-instagram.svg" alt="instagram"></a></li>
-            </ul>
-            <p id="footer-text">
-                Designed and Built by Iffie Ovie
-            </p>
+            <img id="footer-logo" src="/icons/dark-logo.svg" alt="ovie logo">
+            <div class="footer-text-wrapper">
+                <div class="quick-links">
+                    <h4 class="quick-links-heading">Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="Services.html">Services</a>
+                </div>
+                <div class="quick-links">
+                    <h4 class="quick-links-heading">Contact Me</h4>
+                    <a href="mailto:ovieiffieu2much@gmail.com">ovieiffieu2much</a>
+                    <a href="https://wa.me/2348165266847">+2348165266847</a>
+                </div>
+            </div>
+            <hr class="footer-ruler">
+            <div class="closing-remarks">
+                <p class="remark">
+                    Designed and Built by Iffie Ovie
+                </p>
+                <ul class="footer-icons">
+                    <li><a href="https://www.linkedin.com/in/ovie-iffie-b9b2291b1"><img id="linkedin-logo" src="icons/dark-linkedin.svg" alt="linkedIn"></a></li>
+                    <li><a href="https://github.com/ovie009"><img id="github-logo" src="icons/dark-github.svg" alt="github"></a></li>
+                    <li><a href="https://www.facebook.com/iffie.ovie"><img id="facebook-logo" src="icons/dark-facebook.svg" alt="facebook"></a></li>
+                    <li><a href="https://instagram.com/iffieovie"><img id="instagram-logo" src="icons/dark-instagram.svg" alt="instagram"></a></li>
+                </ul>
+            </div>
         </div>
     </footer>
     <script>
@@ -405,8 +422,9 @@
             let linkedin = document.querySelector("#linkedin-logo");
             let github = document.querySelector("#github-logo");
             let facebook = document.querySelector("#facebook-logo");
-            let whatsapp = document.querySelector("#whatsapp-logo");
             let instagram = document.querySelector("#instagram-logo");
+            let footerLogo1 = document.querySelector("#footer-logo");
+            let footerLogo2 = document.querySelector(".footer-logo");
 
             // changing icons to the dark variations
             dropDownIcon.src = "icons/light-list-icon.svg";
@@ -419,8 +437,9 @@
             linkedin.src = "icons/light-linkedin.svg";
             github.src = "icons/light-github.svg";
             facebook.src = "icons/light-facebook.svg";
-            whatsapp.src = "icons/light-whatsapp.svg";
             instagram.src = "icons/light-instagram.svg";
+            footerLogo1.src = "icons/light-logo.svg";
+            footerLogo2.src = "icons/light-logo.svg";
             
             // after input fields has loaded
             // select input fields
