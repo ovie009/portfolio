@@ -23,7 +23,7 @@ function init() {
     cw = mainCanvas.width;
     // height of the main canvas
     ch = mainCanvas.height;
-    let numberOfSnowBalls = 200;
+    let numberOfSnowBalls = 175;
     if (cw >= 820) {
         numberOfSnowBalls = 450;
     }
