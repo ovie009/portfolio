@@ -421,6 +421,14 @@ main{
     100% {bottom: 50px;}
 }
 
+@keyframes popLetter {
+    0% {transform: translate(0, 0) skew(0deg, 0deg);}
+    25% {transform: translate(0, 5px) skew(10deg, 10deg);}
+    50% {transform: translate(0, 0) skew(0deg, 0deg);}
+    75% {transform: translate(0, 5px) skew(-10deg, -10deg);}
+    100% {transform: translate(0, 0) skew(0deg, 0deg);}
+}
+
 #main-canvas{
     position: absolute;
     top: -70px;
@@ -652,7 +660,7 @@ main{
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     /* display: flex;
     flex-flow: column;
     justify-content: flex-start;
@@ -1016,10 +1024,24 @@ footer{
           -webkit-text-fill-color: var(--themeColor5);
         }
 
-        /* .contact-paragraph{
-          -webkit-text-stroke: 2px var(--themeColor5);
+        .name-letters{
+            margin: 8px;
+            transition: ease;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            -webkit-text-stroke: 2px var(--themeColor1);
+            -webkit-text-fill-color: var(--themeColor5);
+        }
+        
+        .name-letters:hover{
+            /* font-size: 1.1em; */
+            -webkit-text-stroke: 0px var(--themeColor1);
           -webkit-text-fill-color: var(--themeColor1);
-        } */
+          animation-name: popLetter;
+          /* transform: scale(2, 2); */
+        }
+
     }
 
     .contact-paragraph{

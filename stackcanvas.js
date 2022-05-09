@@ -6,7 +6,7 @@ let ctx2 = stackCanvas.getContext("2d");
 let sizeGuide = document.querySelector("#canvas-size-guide");
 
 // set width and height of the canvas
-stackCanvas.width = window.innerWidth - 5; 
+stackCanvas.width = window.innerWidth - 10; 
 stackCanvas.height = window.innerHeight - 220;
 
 if (window.innerWidth >= 1000) {
