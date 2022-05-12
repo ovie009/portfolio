@@ -220,7 +220,8 @@
             <!-- contact me button, would have auto scroll feature to contact info
                 at bottom of the page
             -->
-            <button href="#contact-section" class="contact-me" onclick="scrollToContact()">Contact me!</button>
+            <!-- <button href="#contact-section" class="contact-me" onclick="scrollToContact()">Contact me!</button> -->
+            <button href="https://wa.me/2348165266847" class="contact-me">Contact me!</button>
 
             
             <!-- the drop down div that slides to the left when the dropdowm icon is clicked-->
@@ -330,43 +331,110 @@
 
     <section id="desktop-skills-section">
         <div class="desktop-skills-wrapper">
-            <div class="desktop-card">
+            <!-- embedded system card -->
+            <a class="desktop-card" href="#">
                 <div class="desktop-card-wrapper">
                     <div class="desktop-card-text-wrapper">
-                        <h3 class="desktop-card-text top-blank-text">
-                            ARD
-                        </h3>
-                        <h3 class="desktop-card-text top-blank-text-fill">
-                            ARD
-                        </h3>
-
-                        <h3 class="desktop-card-text bottom-blank-text">
-                            PRO
-                        </h3>
-                        <h3 class="desktop-card-text bottom-blank-text-fill">
-                            PRO
-                        </h3>
+                        <div class="desktop-card-heading-wrapper">
+                            <h3 class="desktop-card-heading">Arduino <br> Projects</h3>
+                            <h3 class="desktop-card-heading fill-heading" id="fill-arduino-heading">Arduino <br> Projects</h3>
+                        </div>
                         <p class="desktop-card-p">Prototyping, building and coding Arduino-based projects</p>
                     </div>
                     <div class="desktop-card-img-wrapper">
-                        
-                        <h3 class="desktop-card-text top-img-text">
-                            UINO
-                        </h3>
-                        <h3 class="desktop-card-text top-img-text-fill">
-                            UINO
-                        </h3>
-
-                        <h3 class="desktop-card-text bottom-img-text">
-                            JECTS
-                        </h3>
-                        <h3 class="desktop-card-text bottom-img-text-fill">
-                            JECTS
-                        </h3>
-                        <img src="images/backend_image.jpg" alt="" class="desktop-card-img">
+                        <img id="desktop-arduino" src="images/desktop_images/arduino1.jpg" alt="" class="desktop-card-img">
                     </div>
                 </div>
-            </div>
+            </a>
+            <!-- Circuit Design card -->
+            <a class="desktop-card" href="#">
+                <div class="desktop-card-wrapper">
+                    <div class="desktop-card-text-wrapper">
+                        <div class="desktop-card-heading-wrapper">
+                            <h3 class="desktop-card-heading">Circuit <br> Designs</h3>
+                            <h3 class="desktop-card-heading fill-heading" id="fill-fritzing-heading">Circuit <br> Designs</h3>
+                        </div>
+                        <p class="desktop-card-p">Circuit design and prototyping on the Fritzing app</p>
+                    </div>
+                    <div class="desktop-card-img-wrapper">
+                        
+                        
+                        <img id="desktop-fritzing" src="images/desktop_images/fritzing.png" alt="" class="desktop-card-img">
+                    </div>
+                </div>
+            </a>
+            <!-- UI/UX Design -->
+            <a class="desktop-card" href="#">
+                <div class="desktop-card-wrapper">
+                    <div class="desktop-card-text-wrapper">
+                        <div class="desktop-card-heading-wrapper">
+                            <h3 class="desktop-card-heading">UI/UX <br> Design</h3>
+                            <h3 class="desktop-card-heading fill-heading" id="fill-UI-UX-heading">UI/UX <br> Design</h3>
+                        </div>
+                        <p class="desktop-card-p">User interface and user experience design on the Figma app</p>
+                    </div>
+                    <div class="desktop-card-img-wrapper">
+                        
+                        
+                        <img id="desktop-UI-UX" src="images/desktop_images/ui_ux.jpg" alt="" class="desktop-card-img">
+                    </div>
+                </div>
+            </a>
+            <!-- Frontend Web Development -->
+            <a class="desktop-card" href="#">
+                <div class="desktop-card-wrapper">
+                    <div class="desktop-card-text-wrapper">
+                        <div class="desktop-card-heading-wrapper">
+                            <h3 class="desktop-card-heading">frontend <br> development</h3>
+                            <h3 class="desktop-card-heading fill-heading" id="fill-frontend-heading">frontend <br> development</h3>
+                        </div>
+                        <p class="desktop-card-p">Programming of client side using langauges like HTML, CSS and Javascript</p>
+                    </div>
+                    <div class="desktop-card-img-wrapper">
+                        
+                        
+                        <img id="desktop-frontend" src="images/desktop_images/frontend.jpg" alt="" class="desktop-card-img">
+                    </div>
+                </div>
+            </a>
+            <!-- Backend Web Development -->
+            <a class="desktop-card" href="#">
+                <div class="desktop-card-wrapper">
+                    <div class="desktop-card-text-wrapper">
+                        <div class="desktop-card-heading-wrapper">
+                            <h3 class="desktop-card-heading">Backend <br> development</h3>
+                            <h3 class="desktop-card-heading fill-heading" id="fill-backend-heading">Backend <br> development</h3>
+                        </div>
+                        <p class="desktop-card-p">Programming of client side using langauges like HTML, CSS and Javascript</p>
+                    </div>
+                    <div class="desktop-card-img-wrapper">
+                        <img id="desktop-backend" src="images/desktop_images/backend.png" alt="" class="desktop-card-img">
+                    </div>
+                </div>
+            </a>
+            <!-- CSS Battle -->
+            <a class="desktop-card" href="#">
+                <div class="desktop-card-wrapper">
+                    <div class="desktop-card-text-wrapper">
+                        <div class="desktop-card-heading-wrapper">
+                            <h3 class="desktop-card-heading">
+                                Something Fun
+                                <br>
+                                <span class="desktop-card-emoji" id="desktop-moon-emoji">&#127770</span>
+                            </h3>
+                            <h3 class="desktop-card-heading fill-heading"  id="fill-cssbattle-heading">
+                                Something Fun
+                                <br>
+                                <span class="desktop-card-emoji" id="desktoop-sun-emoji">&#127773</span>
+                            </h3>
+                        </div>
+                        <p class="desktop-card-p">Challenge me to a CSSBattle</p>
+                    </div>
+                    <div class="desktop-card-img-wrapper">
+                        <img id="desktop-cssbattle" src="images/desktop_images/cssbattle.png" alt="" class="desktop-card-img">
+                    </div>
+                </div>
+            </a>
         </div>
     </section>
 
@@ -528,9 +596,9 @@
     <!-- load scrollreavel script file -->
     <script src="scrollreveal.js" type="text/JavaScript"></script>
     <!-- load canvas javascript file -->
-    <!-- <script src="canvas.js" type="text/JavaScript"></script> -->
+    <script src="canvas.js" type="text/JavaScript"></script>
     <!-- load stack canvas javascript file -->
-    <!-- <script src="stackcanvas.js" type="text/JavaScript"></script> -->
+    <script src="stackcanvas.js" type="text/JavaScript"></script>
     <!-- load javascript file to animate cursor -->
     <script src="cursorAnimation.js"></script>
 </body>
