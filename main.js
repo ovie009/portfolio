@@ -273,3 +273,8 @@ let contactSection = document.querySelector("#contact-section");
 function scrollToContact() {
     contactSection.scrollIntoView({behavior: "smooth", block: "start"})
 }
+
+document.getElementById("contact-nav-link").addEventListener("click", function(event){
+    event.preventDefault();
+    scrollToContact();
+  });

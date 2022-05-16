@@ -214,7 +214,7 @@ nav{
     padding: 5px 10px;
 }
 
-.nav-links li > a{
+.nav-links li > a, .nav-links li > a{
     text-decoration: none;
     color: var(--themeColor1);
     font-weight: 400;

@@ -425,3 +425,7 @@ function animateStack() {
         // console.log('stack animating');
     });
 }
+
+
+let stackWrapper = document.querySelector(".stack-contact-wrapper");
+console.log({ stackWrapper })

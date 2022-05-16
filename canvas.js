@@ -59,7 +59,7 @@ document.addEventListener('mousemove', function (e) {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
     // console.log(mouse.y);
-    // console.log(window.scrollY);
+    console.log(window.scrollY);
     // console.log(mousePosition);
 });
 
@@ -216,3 +216,8 @@ window.onload = setTimeout(() => {
 }, 1500);
 
 
+function stopAnimation() {
+    
+}
+
+// console.log({mainCanvas})
