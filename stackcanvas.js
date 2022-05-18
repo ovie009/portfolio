@@ -14,6 +14,19 @@ if (window.innerWidth >= 1000) {
     stackCanvas.height = sizeGuide.clientHeight + 25;
 }
 
+// onscreen resize restart canvas animation and resize the canvas
+window.onresize = function () {
+    // set width and height of the canvas
+    // stackCanvas.width = window.innerWidth - 10; 
+    // stackCanvas.height = window.innerHeight - 220;
+    
+    // if (window.innerWidth >= 1000) {
+    //     stackCanvas.width = sizeGuide.clientWidth + 20; 
+    //     stackCanvas.height = sizeGuide.clientHeight + 25;
+    // }
+    // initStack();
+}
+
 // get cookie
 let lastCookie = getCookie("themeColor");
 
@@ -21,34 +34,6 @@ let lastCookie = getCookie("themeColor");
 let scw = stackCanvas.width;
 // height of the stack canvas
 let sch = stackCanvas.height;
-
-// console.log(scw)
-// console.log(sch)
-// console.log({sizeGuide})
-// console.log( sizeGuide.offsetParent.offsetTop )
-
-let animationTrigger = false; 
-let animationTriggerHeight = sizeGuide.offsetParent.offsetTop - sizeGuide.offsetParent.clientHeight;
-
-
-window.onscroll = function(){
-    // console.log(window);
-    // console.log('scroll Position: '+window.scrollY);
-    // console.log('element Position: '+animationTriggerHeight);
-    if (window.scrollY > animationTriggerHeight ) {
-        // console.log('Initializing animation');
-        // animationTrigger = true;
-        startAnimation();
-    }
-}
-
-function startAnimation() {
-    if (animationTrigger == false) {
-        initStack();
-        animateStack();
-        animationTrigger = true;
-    }
-}
 
 // console.log(scw);
 // console.log(sch);
@@ -414,6 +399,13 @@ function Stack(x, y, velocity, mass, radius, type, ballFill, ballStroke, fontCol
 
 // animate canvas function
 function animateStack() {
+    if(!doStackAnim){
+        ctx2 = stackCanvas.getContext("2d");
+        ctx2.clearRect(0, 0, cw, ch);
+        ctx2=null; 
+        return console.log(doStackAnim);
+    }
+    console.log(doStackAnim);
     requestAnimationFrame(animateStack); //run animateStack function till infinity
     // clear canvas to give illusion of movement
     ctx2.clearRect(0, 0, scw, sch);
@@ -428,4 +420,66 @@ function animateStack() {
 
 
 let stackWrapper = document.querySelector(".stack-contact-wrapper");
-console.log({ stackWrapper })
+// console.log({ stackWrapper })
+
+let doStackAnim = false;
+let stackAnimationInView = false;
+// scroll event listenner
+// this event listener would be used stop and start animations 
+// depending on if they're in the view port 
+document.addEventListener('scroll', function (e) {
+    // scroll height
+    // console.log(scrollHeight)
+    // console.log(snowArray)
+    scrollHeight = window.scrollY;
+    if (scrollHeight < stackWrapper.offsetTop - 1000) {
+        doStackAnim = false;
+        stackAnimationInView = false;
+    } else {
+        if (!stackAnimationInView) {
+            ctx2 = stackCanvas.getContext("2d");
+            doStackAnim=true;
+            animateStack();
+            stackAnimationInView = true;
+        }
+    }
+    
+    // return scrollHeight;
+});
+
+// delay the time the animation starts by 1.5 seconds
+window.onload = setTimeout(() => {
+    initStack();
+    animateStack();
+}, 3000);
+
+// onscreen resize restart canvas animation and resize the canvas
+window.onresize = function () {
+    // first stop animation if canvas is in view
+    scrollHeight = window.scrollY;
+    if (scrollHeight > stackWrapper.offsetTop - 1000) {
+        doStackAnim = false;
+        stackAnimationInView = false;
+    }
+
+    // reset width and height of the canvas
+    stackCanvas.width = window.innerWidth - 10; 
+    stackCanvas.height = window.innerHeight - 220;
+
+    if (window.innerWidth >= 1000) {
+        stackCanvas.width = sizeGuide.clientWidth + 20; 
+        stackCanvas.height = sizeGuide.clientHeight + 25;
+    }
+
+    // restart animation of stack canvas after 1 second
+    setTimeout(() => {
+        if (scrollHeight > stackWrapper.offsetTop - 1000) {
+            if (!stackAnimationInView) {
+                ctx2 = stackCanvas.getContext("2d");
+                doStackAnim=true;
+                animateStack();
+                stackAnimationInView = true;
+            }
+        }
+    }, 1000);
+}

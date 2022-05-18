@@ -13,16 +13,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
     <script>
         /*
-            THE CONTENT OF THIS SCRIPT TAG NEEDS TO BE LOADED
+        THE CONTENT OF THIS SCRIPT TAG NEEDS TO BE LOADED
             BEFORE THE BODY TAG TO CHECK THE 
             THEME PREVOIUSLY CHOSEN, SO THE RIGHT 
             COLORS AND ICONS CAN BE SET
-
+            
             THEME IS SET TO LIGHT BY DEFAULT
         */
+        
         // theme colors array
+        let themeColors = [];
+        let inputColors = [];
+
         // colors arranged from darkest to lightest
-        let themeColors = [
+        themeColors = [
             "#262626",
             "#595959",
             "#737373",
@@ -31,10 +35,14 @@
         ]
 
         // input fields background color array
-        let inputColors = [
+        inputColors = [
             "#2c2c2c",
             "#F8F8F8"
         ]
+
+        // getThemeValue(themeColors, 'themeColor', 5)
+        // getThemeValue(inputColors, 'inputColor', 5)
+
 
         // function to setCookie
         function setCookie(cname, cvalue, exdays) {
@@ -106,6 +114,26 @@
         }
 
         // function to set css theme colors variable with javascript themecolors array
+        function getThemeValue(colorArray, varName, varNum) {
+            // get root element
+            let r = document.querySelector(':root');
+            // loop through themeColour array
+            /*
+                the CSS variables by default in the css file
+                :root{
+                    --themeColor1 : #262626;
+                    --themeColor2 : #595959;
+                    --themeColor3 : #737373;
+                    --themeColor4 : #A6A6A6;
+                    --themeColor5 : #F2F2F2;
+                }
+            */
+            for (let index = 0; index < varNum; index++) {
+                let color = r.style.getPropertyValue(`--${varName}${index + 1}`);
+                colorArray.push(color);
+            }
+        }
+
         function setThemeValue(colorArray, varName) {
             // get root element
             let r = document.querySelector(':root');
@@ -492,7 +520,7 @@
                 </div>
                 <div class="quick-links">
                     <h4 class="quick-links-heading">Contact Me</h4>
-                    <a href="mailto:ovieiffieu2much@gmail.com">ovieiffieu2much</a>
+                    <a href="mailto:ovieiffieu2much@gmail.com">Iffie Ovie</a>
                     <a href="https://wa.me/2348165266847">+2348165266847</a>
                 </div>
             </div>

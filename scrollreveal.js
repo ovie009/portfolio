@@ -29,6 +29,7 @@ for (let i = 1; i <= 9; i++) {
 
 // scroll revael for cards
 ScrollReveal().reveal(".card", { delay: 750, distance: "50px", origin: "bottom", reset: false});
+ScrollReveal().reveal(".desktop-card-img-wrapper", { delay: 750, distance: "50px", origin: "bottom", reset: false});
 
 // scroll reveal for each input fields and submit button
 ScrollReveal().reveal(".contact-paragraph", { delay: 1000, origin: "bottom", reset: false});

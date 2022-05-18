@@ -13,7 +13,11 @@ let ch = mainCanvas.height;
 // array to store all the snow ball object
 let snowArray;
 
-// function that initializes the snow object 
+// scroll height of window
+let scrollHeight = window.scrollY;
+let resetAnimation = false;
+
+// funcroll that initializes the snow object 
 function init() {
     // variable to control number of snowballs
     snowArray = [];
@@ -59,11 +63,36 @@ document.addEventListener('mousemove', function (e) {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
     // console.log(mouse.y);
-    console.log(window.scrollY);
     // console.log(mousePosition);
 });
 
-// onscreen resize restart canvas animation
+let doAnim = true;
+let animationInView = true;
+// scroll event listenner
+// this event listener would be used stop and start animations 
+// depending on if they're in the view port 
+document.addEventListener('scroll', function (e) {
+    // scroll height
+    // console.log(scrollHeight)
+    // console.log(snowArray)
+    scrollHeight = window.scrollY;
+    if (scrollHeight > ch + 300) {
+        doAnim = false;
+        animationInView = false;
+    } else {
+        if (!animationInView) {
+            ctx = mainCanvas.getContext("2d");
+            doAnim=true;
+            // frameRate= 60;
+            animate();
+            animationInView = true;
+        }
+    }
+    
+    // return scrollHeight;
+});
+
+// onscreen resize restart canvas animation and resize the canvas
 window.onresize = function () {
     init();
     mainCanvas.width = window.innerWidth;
@@ -80,8 +109,8 @@ window.onresize = function () {
 function Snow(x, y, dx, dy, radius, color) {
     this.x = x; // x coordinate of the snow ball
     this.y = y; // y coordinate of the snow ball
-    this.dx = dx; // velocity in x dorection of the snow ball
-    this.dy = dy; // velocity in x dorection of the snow ball
+    this.dx = dx; // velocity in x direction of the snow ball
+    this.dy = dy; // velocity in y direction of the snow ball
     this.radius = radius; // radius of the snow ball
     this.color = color; // color of the snow ball
     this.opacity = 0; // opacity of the snow balls initially set to 0
@@ -105,7 +134,7 @@ function Snow(x, y, dx, dy, radius, color) {
         // fill the snow ball
         ctx.fill();
     }
-
+    
     // function to update the new position of the snow ball in according to the velocities
     this.update = function() {
         // checking if the snowball is still within the screen width
@@ -147,23 +176,6 @@ function Snow(x, y, dx, dy, radius, color) {
             this.opacity = 1;
         }
 
-        // console.log(distanceFromMouse);
-        // if ( distanceFromMouse < 50 ) {
-        //     // checking if the radius of the ball has increased to the maximum value
-        //     if (this.radius <= this.maximumRadius) {
-        //         // increase ball radius inversely proportional to distance from mouse
-        //         this.radius += (this.increment / distanceFromMouse);
-        //     }
-
-        // } else {
-
-        //     // checking iif the radius of the ball has increased to the maximum value
-        //     if (this.radius > this.initialRadius) {
-        //         // decrease ball radius at a steady rate
-        //         this.radius -= this.increment;
-        //     }
-        // }
-        
         // incresing x coordinate by the speed in the x direction, dx
         this.x += this.dx; 
         // incresing y coordinate by the speed in the y direction, dy
@@ -199,9 +211,27 @@ window.addEventListener('mousemove',
         // console.log("mouse moving");
 })
 
+let frameRate = 60;
+
 // animate canvas function
-function animate() {
-    requestAnimationFrame(animate);
+function animate(time) {
+    //block of code top stop animation
+    if(!doAnim){
+        ctx.clearRect(0, 0, cw, ch);
+        ctx=null; 
+        // console.log(doAnim);
+        return console.log(doAnim);
+    }
+    // console.log(doAnim);
+    // let setFrame = setFrameRate(frameRate);
+    // if (time - setFrame.lastTime < setFrame.minTime) { // skip the frame if the call is too early
+    //     requestAnimationFrame(animate);
+    //     ctx.clearRect(0, 0, cw, ch);
+    //     return; // return as there is nothing to do 
+    // }
+    // setFrame.lastTime = time; // remember the time of the rendered frame
+    // render the frame 
+    requestAnimationFrame(animate); //get next frame
     ctx.clearRect(0, 0, cw, ch);
     
     snowArray.forEach(snow => {
@@ -209,15 +239,23 @@ function animate() {
     });
 }
 
-// delay the time the animation starts by 1 seconds
+// delay the time the animation starts by 1.5 seconds
 window.onload = setTimeout(() => {
     init();
     animate();
 }, 1500);
 
+// function to set frame rate
+function setFrameRate(framesPerSecond) {
+    // Valid values framesPerSecond are 60,30,20,15,10...
+    // set the mim time to render the next frame
+    let frameMinTime = (1000/60) * (60 / framesPerSecond) - (1000/60) * 0.5;
+    var lastFrameTime = 0;  // the last frame time
 
-function stopAnimation() {
-    
+    return {
+        minTime: frameMinTime,
+        lastTime: lastFrameTime
+    };
 }
 
 // console.log({mainCanvas})
