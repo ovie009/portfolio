@@ -14,17 +14,8 @@ if (window.innerWidth >= 1000) {
     stackCanvas.height = sizeGuide.clientHeight + 25;
 }
 
-// onscreen resize restart canvas animation and resize the canvas
-window.onresize = function () {
-    // set width and height of the canvas
-    // stackCanvas.width = window.innerWidth - 10; 
-    // stackCanvas.height = window.innerHeight - 220;
-    
-    // if (window.innerWidth >= 1000) {
-    //     stackCanvas.width = sizeGuide.clientWidth + 20; 
-    //     stackCanvas.height = sizeGuide.clientHeight + 25;
-    // }
-    // initStack();
+if (window.innerHeight < 500) {
+    stackCanvas.height = 2 * sizeGuide.clientHeight + 25;
 }
 
 // get cookie
@@ -454,32 +445,40 @@ window.onload = setTimeout(() => {
 }, 3000);
 
 // onscreen resize restart canvas animation and resize the canvas
-window.onresize = function () {
-    // first stop animation if canvas is in view
-    scrollHeight = window.scrollY;
-    if (scrollHeight > stackWrapper.offsetTop - 1000) {
-        doStackAnim = false;
-        stackAnimationInView = false;
-    }
+// document.addEventListener("resize", function () {
+//     // first stop animation if canvas is in view
+//     scrollHeight = window.scrollY;
+//     if (scrollHeight > stackWrapper.offsetTop - 1000) {
+//         doStackAnim = false;
+//         stackAnimationInView = false;
+//     }
 
-    // reset width and height of the canvas
-    stackCanvas.width = window.innerWidth - 10; 
-    stackCanvas.height = window.innerHeight - 220;
 
-    if (window.innerWidth >= 1000) {
-        stackCanvas.width = sizeGuide.clientWidth + 20; 
-        stackCanvas.height = sizeGuide.clientHeight + 25;
-    }
+//     sizeGuide = document.querySelector("#canvas-size-guide");
 
-    // restart animation of stack canvas after 1 second
-    setTimeout(() => {
-        if (scrollHeight > stackWrapper.offsetTop - 1000) {
-            if (!stackAnimationInView) {
-                ctx2 = stackCanvas.getContext("2d");
-                doStackAnim=true;
-                animateStack();
-                stackAnimationInView = true;
-            }
-        }
-    }, 1000);
-}
+//     // reset width and height of the canvas
+//     stackCanvas.width = window.innerWidth - 10; 
+//     stackCanvas.height = window.innerHeight - 220;
+
+//     if (window.innerWidth >= 1000) {
+//         stackCanvas.width = sizeGuide.clientWidth + 20; 
+//         stackCanvas.height = sizeGuide.clientHeight + 25;
+//     }
+
+        
+//     if (window.innerHeight < 500) {
+//         stackCanvas.height = 2 * sizeGuide.clientHeight + 25;
+//     }
+
+//     // restart animation of stack canvas after 1 second
+//     setTimeout(() => {
+//         if (scrollHeight > stackWrapper.offsetTop - 1000) {
+//             if (!stackAnimationInView) {
+//                 ctx2 = stackCanvas.getContext("2d");
+//                 doStackAnim=true;
+//                 animateStack();
+//                 stackAnimationInView = true;
+//             }
+//         }
+//     }, 1000);
+// });

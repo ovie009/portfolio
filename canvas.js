@@ -3,12 +3,22 @@ let mainCanvas = document.querySelector("#main-canvas");
 let ctx = mainCanvas.getContext("2d");
 // set canvas width and height
 mainCanvas.width = window.innerWidth;
-mainCanvas.height = window.innerHeight;
+let ch;
+let cw;
+
+//checking for phones in landscape
+if (window.innerHeight <= 500) {
+    mainCanvas.height = window.innerHeight + window.innerHeight;
+} else{
+    mainCanvas.height = window.innerHeight;
+}
+
+console.log(window.innerHeight);
 
 // width of the main canvas
-let cw = mainCanvas.width;
+cw = mainCanvas.width;
 // height of the main canvas
-let ch = mainCanvas.height;
+ch = mainCanvas.height;
 
 // array to store all the snow ball object
 let snowArray;
@@ -21,12 +31,22 @@ let resetAnimation = false;
 function init() {
     // variable to control number of snowballs
     snowArray = [];
-    mainCanvas.width = window.innerWidth;
-    mainCanvas.height = window.innerHeight;
-    // width of the main canvas
-    cw = mainCanvas.width;
-    // height of the main canvas
-    ch = mainCanvas.height;
+    
+    //checking for phones in landscape
+    // responsive condition for phones in landscape mode
+    // double the height of canvas if the height is less than 500px
+    // mainCanvas.width = window.innerWidth;
+    // if (window.innerHeight <= 500) {
+    //     mainCanvas.height = window.innerHeight + window.innerHeight;
+    // } else{
+    //     mainCanvas.height = window.innerHeight;
+    // }
+    // // width of the main canvas
+    // cw = mainCanvas.width;
+    // // height of the main canvas
+    // ch = mainCanvas.height;
+
+
     let numberOfSnowBalls = 175;
     if (cw >= 820) {
         numberOfSnowBalls = 450;
@@ -93,15 +113,20 @@ document.addEventListener('scroll', function (e) {
 });
 
 // onscreen resize restart canvas animation and resize the canvas
-window.onresize = function () {
-    init();
-    mainCanvas.width = window.innerWidth;
+document.addEventListener("resize", function () {
+    mainCanvas.width = document.addEventListener;
     mainCanvas.height = window.innerHeight;
+    //checking for phones in landscape
+    if (window.innerHeight < 500) {
+        mainCanvas.height = 2 * window.innerHeight;
+    }
     // width of the main canvas
     cw = mainCanvas.width;
     // height of the main canvas
     ch = mainCanvas.height;
-}
+    init();
+    animate();
+});
 
 // console.log(snowArray)
 
